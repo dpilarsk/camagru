@@ -35,12 +35,15 @@ header ul
 }
 
 .container form input[type="text"],
+.container form input[type="email"],
+.container form input[type="submit"],
 .container form input[type="password"]
 {
 	padding: 10px;
 	border: none;
 	border-bottom: solid 5px #C9C9C9;
 	width: 100%;
+	margin-right: 15px;
 	-webkit-transition: border-bottom .5s;
 	-moz-transition: border-bottom .5s;
 	-ms-transition: border-bottom .5s;
@@ -49,7 +52,10 @@ header ul
 	margin-bottom: 5px;
 }
 
+
 .container form input[type="text"]:focus,
+.container form input[type="email"]:focus,
+.container form input[type="submit"],
 .container form input[type="password"]:focus
 {
 	outline: none;
@@ -91,22 +97,6 @@ header ul
 	.container form
 	{
 		display: flex;
-	}
-
-	.container form input[type="text"],
-	.container form input[type="password"]
-	{
-		padding: 10px;
-		border: none;
-		border-bottom: solid 5px #C9C9C9;
-		width: 100%;
-		margin-right: 15px;
-		-webkit-transition: border-bottom .5s;
-		-moz-transition: border-bottom .5s;
-		-ms-transition: border-bottom .5s;
-		-o-transition: border-bottom .5s;
-		transition: border-bottom .5s;
-		margin-bottom: 5px;
 	}
 }
 
