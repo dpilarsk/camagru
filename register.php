@@ -19,36 +19,11 @@ $db->connect("camagru");
 	<div class="container">
 		<form action="/register.php" method="POST">
 			<input type="text" placeholder="Nom d'utilisateur (3 caract&edot;res ou plus)" name="username" id="username">
-			<input type="password" placeholder="Mot de passe (8 caract&edot;res ou plus (Une majuscule, un chiffre et un caract&edot;re sp&eacute;cial))" name="password" id="password">
+			<input type="password" placeholder="Mot de passe (8 caract&edot;res | + (Majuscule & Chiffre & Caract&edot;re sp&eacute;cial))" name="password" id="password">
 			<input type="email" placeholder="Email" name="email" id="email">
 			<input type="submit" id="submit" disabled>
 		</form>
 	</div>
-	<script>
-		 document.getElementById("username").addEventListener("input", function (e) {
-			if ((this.value.length < 3 || this.value.length > 254 || this.value.indexOf(' ') > -1) && this.value.length > 0)
-			{
-				this.style.borderBottomColor = "red"
-				document.getElementById("submit").disabled = true
-			}
-			 else
-			{
-				this.style.borderBottomColor = ""
-				document.getElementById("submit").disabled = false
-			}
-		});
-		 document.getElementById("password").addEventListener("input", function (e) {
-			 if ((this.value.length < 8 || this.value.length > 254) && this.value.length > 0)
-			 {
-				 this.style.borderBottomColor = "red"
-				 document.getElementById("submit").disabled = true
-			 }
-			 else
-			 {
-				 this.style.borderBottomColor = ""
-				 document.getElementById("submit").disabled = false
-			 }
-		 });
-	</script>
+	<script src="resources/js/register.js"></script>
 </body>
 </html>
