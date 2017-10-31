@@ -6,7 +6,7 @@
 			<hr>
 			<a href="#"><li>Galerie</li></a>
 			<hr>
-			<a href="#"><li>Connexion</li></a>
+			<a href="login.php"><li>Connexion</li></a>
 			<hr>
 			<a href="register.php"><li>Inscription</li></a>
 			<hr>
