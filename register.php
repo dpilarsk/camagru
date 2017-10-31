@@ -24,6 +24,7 @@ $db->connect("camagru");
 			<input type="submit" id="submit" disabled>
 		</form>
 	</div>
+	<?php include_once 'resources/partials/footer.php'?>
 	<script src="resources/js/register.js"></script>
 </body>
 </html>
