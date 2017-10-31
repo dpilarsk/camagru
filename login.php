@@ -9,7 +9,7 @@ $db->connect("camagru");
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Camagru - Inscription</title>
+	<title>Camagru - Connexion</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<meta name=""viewport content="width=device-width"/>
 </head>
@@ -24,6 +24,5 @@ $db->connect("camagru");
 	</form>
 </div>
 <?php include_once 'resources/partials/footer.php'?>
-<script src="resources/js/register.js"></script>
 </body>
 </html>
