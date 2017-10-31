@@ -1,48 +1,149 @@
 body
 {
-	background-color: #DDDDDD;
+	background-color: #ecf0f1;
 	font-family: 'Work Sans', sans-serif;
 }
 
 header
 {
 	position: sticky;
-	background-color: #FFFFFF;
-	padding: 0;
-	margin-top: -5px;
+	background-color: #bdc3c7;
 	text-align: center;
 }
 
 header ul
 {
+	margin: 0;
+	padding: 0;
 	list-style: none;
+}
+
+.container
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: flex-end;
+	align-items: stretch;
+}
+
+.container form
+{
+	display: block;
+	width: 90%;
+}
+
+.container form input[type="text"],
+.container form input[type="password"]
+{
+	padding: 10px;
+	border: none;
+	border-bottom: solid 5px #C9C9C9;
+	width: 100%;
+	-webkit-transition: border-bottom .5s;
+	-moz-transition: border-bottom .5s;
+	-ms-transition: border-bottom .5s;
+	-o-transition: border-bottom .5s;
+	transition: border-bottom .5s;
+	margin-bottom: 5px;
+}
+
+.container form input[type="text"]:focus,
+.container form input[type="password"]:focus
+{
+	outline: none;
+	border-bottom: solid 5px #969696;
 }
 
 @media screen and (min-width: 900px)
 {
 	header ul
 	{
-		display: inline-flex;
+		display: flex;
 	}
 
 	header ul li
 	{
-		margin-left: 2vmin;
-		height: 100%;
+		display: flex;
+		padding-top: 2vmin;
+		padding-bottom: 2vmin;
+		padding-right: 4vmin;
+		padding-left: 4vmin;
+		-webkit-transition: background-color .5s;
+		-moz-transition: background-color .5s;
+		-ms-transition: background-color .5s;
+		-o-transition: background-color .5s;
+		transition: background-color .5s;
 	}
 
 	header ul li:hover
 	{
-		background-color: cyan;
+		background-color: #95a5a6;
 	}
 
-	header ul li a
+	header ul a
 	{
 		color: #000;
 		text-decoration: none;
+	}
+
+	.container form
+	{
+		display: flex;
+	}
+
+	.container form input[type="text"],
+	.container form input[type="password"]
+	{
+		padding: 10px;
+		border: none;
+		border-bottom: solid 5px #C9C9C9;
+		width: 100%;
+		margin-right: 15px;
+		-webkit-transition: border-bottom .5s;
+		-moz-transition: border-bottom .5s;
+		-ms-transition: border-bottom .5s;
+		-o-transition: border-bottom .5s;
+		transition: border-bottom .5s;
+		margin-bottom: 5px;
 	}
 }
 
 @media screen and (max-width: 900px)
 {
+	header ul
+	{
+		display: block;
+	}
+
+	header ul li
+	{
+		padding-top: 1vmin;
+		padding-bottom: 1vmin;
+		padding-right: 2vmin;
+		padding-left: 2vmin;
+		-webkit-transition: background-color .5s;
+		-moz-transition: background-color .5s;
+		-ms-transition: background-color .5s;
+		-o-transition: background-color .5s;
+		transition: background-color .5s;
+	}
+
+	header ul li:hover
+	{
+		background-color: #95a5a6;
+	}
+
+	header ul a
+	{
+		color: #000;
+		text-decoration: none;
+	}
+
+	.container form
+	{
+		margin-right: 10px;
+		width: 90%;
+	}
 }

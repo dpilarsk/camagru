@@ -67,7 +67,7 @@ class Database
 	public function connect($name = 'setup')
 	{
 		if (!$this->db->query("use $name;"))
-			print_r("Please setup database");
+			die("Please setup database");
 	}
 }
 
