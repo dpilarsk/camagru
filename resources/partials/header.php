@@ -4,7 +4,7 @@
 			<hr>
 			<a href="/"><li>Accueil</li></a>
 			<hr>
-			<a href="#"><li>Galerie</li></a>
+			<a href="gallery.php"><li>Galerie</li></a>
 			<hr>
 			<a href="login.php"><li>Connexion</li></a>
 			<hr>
