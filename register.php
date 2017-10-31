@@ -19,7 +19,7 @@ $db->connect("camagru");
 	<div class="container">
 		<form action="/register.php" method="POST">
 			<input type="text" placeholder="Nom d'utilisateur (3 caract&edot;res ou plus)" name="username" id="username">
-			<input type="password" placeholder="Mot de passe (8 caract&edot;res ou plus)" name="password" id="password">
+			<input type="password" placeholder="Mot de passe (8 caract&edot;res ou plus (Une majuscule, un chiffre et un caract&edot;re sp&eacute;cial))" name="password" id="password">
 			<input type="email" placeholder="Email" name="email" id="email">
 			<input type="submit" id="submit" disabled>
 		</form>
