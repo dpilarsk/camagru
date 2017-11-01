@@ -15,5 +15,6 @@
 </head>
 <body>
 	<?php include_once 'resources/partials/header.php'; ?>
+	<?php include_once 'resources/partials/footer.php'; ?>
 </body>
 </html>
