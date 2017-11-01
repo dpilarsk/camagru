@@ -14,7 +14,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	`font-size: 100%;
+	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -44,7 +44,6 @@ blockquote, q {
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
 	content: none;
 }
 table {
@@ -133,11 +132,26 @@ header ul
 
 .card
 {
-	width: 255px;
-	height: 200px;
 	padding-right: 30px;
 	padding-left: 30px;
 	padding-bottom: 20px;
+}
+
+.card img
+{
+	width: 255px;
+	height: 200px;
+	-webkit-transition: filter .3s;
+	-moz-transition: filter .3s;
+	-ms-transition: filter .3s;
+	-o-transition: filter .3s;
+	transition: filter .3s;
+}
+
+.card img:hover
+{
+	-webkit-filter: blur(2px) grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: blur(2px) grayscale(100%);
 }
 
 footer
@@ -163,10 +177,7 @@ footer
 	header ul li
 	{
 		display: flex;
-		padding-top: 2vmin;
-		padding-bottom: 2vmin;
-		padding-right: 4vmin;
-		padding-left: 4vmin;
+		padding: 2vmin 4vmin;
 		-webkit-transition: background-color .5s;
 		-moz-transition: background-color .5s;
 		-ms-transition: background-color .5s;
@@ -200,10 +211,7 @@ footer
 
 	header ul li
 	{
-		padding-top: 1vmin;
-		padding-bottom: 1vmin;
-		padding-right: 2vmin;
-		padding-left: 2vmin;
+		padding: 1vmin 2vmin;
 		-webkit-transition: background-color .5s;
 		-moz-transition: background-color .5s;
 		-ms-transition: background-color .5s;

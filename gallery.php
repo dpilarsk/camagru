@@ -20,15 +20,14 @@ $db->connect("camagru");
 <!--	<a href="view.php?id=#"><span class="card"></span></a>-->
 	<div class="gallery">
 		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
-		<div class="card"><a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/futurama/255/200/5" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/futurama/255/200/2" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/nemo/255/200/2" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/nemo/255/200/5" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/simpsons/255/200/2" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/simpsons/255/200/5" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/up/255/200/2" alt=""></a></div>
+		<div class="card"><a href="#"><img src="http://lorempicsum.com/up/350/200/1" alt=""></a></div>
 	</div>
 </div>
 <?php include_once 'resources/partials/footer.php'?>
