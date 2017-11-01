@@ -26,7 +26,7 @@ $db->connect("camagru");
 		<div class="res" id="res"></div>
 	</div>
 	<?php include_once 'resources/partials/footer.php'?>
-	<script src="resources/js/register.js"></script>
 	<script src="resources/js/ajax.js"></script>
+	<script src="resources/js/register.js"></script>
 </body>
 </html>
