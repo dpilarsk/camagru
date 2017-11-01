@@ -102,6 +102,7 @@ header ul
 	border-bottom: solid 5px #C9C9C9;
 	width: 100%;
 	margin-right: 15px;
+	text-align: center;
 	-webkit-transition: border-bottom .5s;
 	-moz-transition: border-bottom .5s;
 	-ms-transition: border-bottom .5s;
@@ -222,7 +223,7 @@ footer
 
 	.container form
 	{
-		display: flex;
+		margin-left: 10%;
 	}
 }
 
