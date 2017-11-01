@@ -28,23 +28,5 @@ $db->connect("camagru");
 	<?php include_once 'resources/partials/footer.php'?>
 	<script src="resources/js/register.js"></script>
 	<script src="resources/js/ajax.js"></script>
-	<script>
-		var form = document.getElementById("register")
-		var xhr = getHttpRequest()
-		form.addEventListener("submit", function (e) {
-			e.preventDefault()
-			var data = new FormData(form)
-			xhr.open('POST', '/functions/register.php', true)
-			xhr.send(data)
-		})
-		xhr.onreadystatechange = function () {
-			var res = document.getElementById("res")
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				res.innerHTML = xhr.responseText
-			}
-			else if (xhr.status >= 400)
-				res.innerHTML = "Impossible de joindre le serveur !"
-		}
-	</script>
 </body>
 </html>
