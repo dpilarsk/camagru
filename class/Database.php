@@ -69,6 +69,7 @@ class Database
 		if (!$this->db->query("use $name;"))
 			die("Please setup database");
 		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		return $this->db;
 	}
 }
 

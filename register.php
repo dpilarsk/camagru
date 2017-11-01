@@ -17,14 +17,34 @@ $db->connect("camagru");
 	<?php include_once 'resources/partials/header.php'; ?>
 	<br>
 	<div class="container">
-		<form action="/register.php" method="POST">
+		<form action="#" method="POST" id="register">
 			<input type="text" placeholder="Nom d'utilisateur (3 caract&edot;res ou plus)" name="username" id="username">
 			<input type="password" placeholder="Mot de passe (8 caract&edot;res | + (Majuscule & Chiffre & Caract&edot;re sp&eacute;cial))" name="password" id="password">
 			<input type="email" placeholder="Email" name="email" id="email">
 			<input type="submit" id="submit" value="Inscription" disabled>
 		</form>
+		<div class="res" id="res"></div>
 	</div>
 	<?php include_once 'resources/partials/footer.php'?>
 	<script src="resources/js/register.js"></script>
+	<script src="resources/js/ajax.js"></script>
+	<script>
+		var form = document.getElementById("register")
+		var xhr = getHttpRequest()
+		form.addEventListener("submit", function (e) {
+			e.preventDefault()
+			var data = new FormData(form)
+			xhr.open('POST', '/functions/register.php', true)
+			xhr.send(data)
+		})
+		xhr.onreadystatechange = function () {
+			var res = document.getElementById("res")
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				res.innerHTML = xhr.responseText
+			}
+			else if (xhr.status >= 400)
+				res.innerHTML = "Impossible de joindre le serveur !"
+		}
+	</script>
 </body>
 </html>
