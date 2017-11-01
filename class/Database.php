@@ -37,6 +37,7 @@ class Database
 								  	email varchar(255) NOT NULL,
 								  	status int NOT NULL,
 								  	token varchar(255) NOT NULL,
+								  	end_at datetime,
 								  	primary key (id)
 						);");
 

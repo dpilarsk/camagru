@@ -121,6 +121,11 @@ header ul
 	border-bottom: solid 5px #969696;
 }
 
+.container form input[type="submit"]:disabled
+{
+	border-bottom: solid 5px #FF0000;
+}
+
 .gallery
 {
 	display: flex;
@@ -186,6 +191,12 @@ header ul
 	text-align: center;
 	width: 25%;
 	margin-left: 35%;
+}
+
+#forgotPass
+{
+	padding: 10px;
+	width: 100%;
 }
 
 footer

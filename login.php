@@ -21,6 +21,9 @@ $db->connect("camagru");
 			<input type="text" placeholder="Nom d'utilisateur" name="username" id="username">
 			<input type="password" placeholder="Mot de passe" name="password" id="password">
 			<input type="submit" id="submit" value="Connexion" disabled>
+			<a href="forgot.php">
+				<button id="forgotPass">J'ai oubli&eacute;(e) mon mot de passe.</button>
+			</a>
 		</form>
 	</div>
 	<?php include_once 'resources/partials/footer.php'?>
