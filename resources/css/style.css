@@ -148,10 +148,34 @@ header ul
 	transition: filter .3s;
 }
 
-.card img:hover
+.user
+{
+	display: inherit;
+	visibility: hidden;
+	opacity: 0;
+	color: #ffffff;
+	background-color: #000000;
+	text-align: center;
+
+	width: inherit;
+	padding: 10px;
+	-webkit-transition: opacity .3s linear;
+	-moz-transition: opacity .3s linear;
+	-ms-transition: opacity .3s linear;
+	-o-transition: opacity .3s linear;
+	transition: opacity .3s linear
+}
+
+.card:hover img
 {
 	-webkit-filter: blur(2px) grayscale(100%); /* Safari 6.0 - 9.0 */
 	filter: blur(2px) grayscale(100%);
+}
+
+.card:hover > .user
+{
+	visibility: visible;
+	opacity: 1;
 }
 
 footer
