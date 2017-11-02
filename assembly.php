@@ -29,7 +29,7 @@
 				<button id="pic">Take a pic</button>
 				<canvas id="canvas"></canvas>
 				<canvas id="apercu"></canvas>
-				<form action="#" method="POST" enctype="multipart/form-data">
+				<form action="#" method="POST" enctype="multipart/form-data" id="picture">
 					Choisir une image:
 					<input type="file" name="uploadPic" id="uploadPic">
 					<input type="submit" value="Upload" name="submit">

@@ -9,7 +9,7 @@
 				<hr>
 				<a href="assembly.php"><li>Montage</li></a>
 				<hr>
-				<a href="#"><li>Compte</li></a>
+				<a href="account.php"><li>Compte</li></a>
 				<hr>
 				<a href="disconnect.php"><li>Deconnexion</li></a>
 				<hr>
