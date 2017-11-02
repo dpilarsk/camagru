@@ -103,4 +103,13 @@ class Picture
 			}
 		}
 	}
+
+	public function getLayers()
+	{
+		$layers = $this->db->prepare('SELECT * FROM layers');
+		$layers->execute();
+		$res = $layers->fetchall();
+		$layers->closeCursor();
+		return $res;
+	}
 }

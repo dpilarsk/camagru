@@ -9,7 +9,8 @@
 	Autoloader::register();
 	require_once 'config/database.php';
 	$db = new Database($DB_DSN, $DB_USER, $DB_PASSWORD);
-	$db->connect("camagru");
+	$db = $db->connect("camagru");
+	$layers = new Picture($db);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,23 +39,12 @@
 				</form>
 				<div class="res" id="res"></div>
 				<div class="layouts" id="layouts">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="1">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="2">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="3">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="4">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="5">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="6">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="7">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="8">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="9">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="10">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="11">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="12">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="13">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="14">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="15">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="16">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="17">
+					<?php $layers = $layers->getLayers();
+					for ($i = 0; $i < count($layers); $i++)
+					{
+						echo "<img src=\"" . $layers[$i]['path'] . "\" alt=\"" . $layers[$i]['id'] . "\" width=\"255px\" height=\"200px\">";
+					}
+					?>
 				</div>
 <!--				<img src="" alt="" id="photo">-->
 			</div>
@@ -127,6 +117,7 @@
 			apercu.width = width
 			apercu.height = height
 			apercu.getContext('2d').drawImage(video, 0, 0, width, height)
+			button.disabled = true
 //			var data = apercu.toDataURL('image/png')
 //			photo.setAttribute('src', data)
 		})
@@ -154,8 +145,11 @@
 				layer_id.value = e.alt
 				Array.prototype.forEach.call(layersCont, function (el) {
 					el.style.border = 'none'
+					canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
 				})
+				canvas.getContext('2d').drawImage(e, 0, 0, width, height)
 				e.style.border = 'solid 5px #FF0000'
+				button.disabled = false
 			})
 		})
 	</script>
