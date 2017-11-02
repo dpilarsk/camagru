@@ -33,6 +33,7 @@
 					Choisir une image:
 					<input type="file" name="uploadPic" id="uploadPic">
 					<input type="text" name="token" value="<?= $_SESSION['token'] ?>" style="display: none">
+					<input type="text" name="layer_id" value="" id="layer_id">
 					<input type="submit" value="Upload" name="submit">
 				</form>
 				<div class="res" id="res"></div>
