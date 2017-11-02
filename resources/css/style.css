@@ -217,6 +217,65 @@ header ul
 	width: 100%;
 }
 
+#pic
+{
+	display: inherit;
+	color: #ffffff;
+	background-color: #000000;
+	text-align: center;
+
+	width: 320px;
+	padding: 10px;
+	-webkit-transition: opacity .3s linear;
+	-moz-transition: opacity .3s linear;
+	-ms-transition: opacity .3s linear;
+	-o-transition: opacity .3s linear;
+	transition: opacity .3s linear;
+	margin-left: 35%;
+}
+
+.assembly
+{
+	margin-left: 20px;
+	margin-right: 20px;
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+	align-items: flex-start;
+}
+
+.assembly .main
+{
+	position: relative;
+	border: solid 2px #000000;
+	width: 1150px;
+}
+
+.assembly .main #video
+{
+	z-index: 0;
+	top: 0px;
+	margin-left: 35%;
+}
+
+.assembly .main #canvas
+{
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	margin-left: 35%;
+}
+
+.assembly .side
+{
+	margin-top: 5px;
+	text-align: center;
+	border: solid 2px #000000;
+	width: 450px;
+}
+
 footer
 {
 	height: 30px;
@@ -297,5 +356,20 @@ footer
 	{
 		display:flex;
 		flex-direction: column;
+	}
+
+	.assembly .main #video
+	{
+		margin-left: 0;
+	}
+
+	.assembly .main #canvas
+	{
+		margin-left: 0;
+	}
+
+	.assembly .main #pic
+	{
+		margin-left: 0;
 	}
 }

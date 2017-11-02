@@ -7,6 +7,8 @@
 			<?php if (isset($_SESSION['id'])){ ?>
 				<a href="gallery.php"><li>Galerie</li></a>
 				<hr>
+				<a href="assembly.php"><li>Montage</li></a>
+				<hr>
 				<a href="#"><li>Compte</li></a>
 				<hr>
 				<a href="disconnect.php"><li>Deconnexion</li></a>
