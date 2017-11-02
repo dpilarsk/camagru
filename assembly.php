@@ -38,23 +38,23 @@
 				</form>
 				<div class="res" id="res"></div>
 				<div class="layouts">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
-					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="1">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="2">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="3">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="4">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="5">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="6">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="7">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="8">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="9">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="10">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="11">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="12">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="13">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="14">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="15">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="16">
+					<img src="http://lorempicsum.com/rio/255/200/2" alt="17">
 				</div>
 <!--				<img src="" alt="" id="photo">-->
 			</div>
