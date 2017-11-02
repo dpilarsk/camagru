@@ -38,7 +38,12 @@ class Picture
 		{
 			if (move_uploaded_file($file['tmp_name'], $target_file))
 			{
-				echo "Le fichier a ete uploade dans: $target_file";
+				$new_target = explode('..', $target_file);
+				$new_target = $new_target[1];
+				$insert_upload = $this->db->prepare("INSERT INTO layers (path) VALUES (:path)");
+				$insert_upload->execute(array(':path' => $new_target));
+				$insert_upload->closeCursor();
+				echo "Le fichier a ete uploade dans: $new_target";
 			}
 			else
 			{
