@@ -32,8 +32,10 @@
 				<form action="#" method="POST" enctype="multipart/form-data" id="picture">
 					Choisir une image:
 					<input type="file" name="uploadPic" id="uploadPic">
+					<input type="text" name="token" value="<?= $_SESSION['token'] ?>" style="display: none">
 					<input type="submit" value="Upload" name="submit">
 				</form>
+				<div class="res" id="res"></div>
 				<div class="layouts">
 					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
 					<img src="http://lorempicsum.com/rio/255/200/2" alt="">
@@ -73,6 +75,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="resources/js/ajax.js"></script>
 	<script>
 		var video = document.getElementById("video"),
 			canvas = document.getElementById('canvas'),
@@ -82,12 +85,12 @@
 			streaming = false,
 			width = 320,
 			height = 0
+		button.disabled = true
 
 		navigator.getMedia = ( navigator.getUserMedia ||
 			navigator.webkitGetUserMedia ||
 			navigator.mozGetUserMedia ||
 			navigator.msGetUserMedia);
-
 		navigator.getMedia({
 			video: true,
 			audio: false
@@ -126,7 +129,23 @@
 //			var data = apercu.toDataURL('image/png')
 //			photo.setAttribute('src', data)
 		})
-		button.disabled = true
+
+		var form = document.getElementById('picture')
+		var xhr = getHttpRequest()
+		form.addEventListener("submit", function (e) {
+			e.preventDefault()
+			var data = new FormData(form)
+			xhr.open('POST', '/functions/upload_img_wl.php', true)
+			xhr.send(data)
+		})
+		xhr.onreadystatechange = function () {
+			var res = document.getElementById("res")
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				res.innerHTML = xhr.responseText
+			}
+			else if (xhr.status >= 400)
+				res.innerHTML = "Impossible de joindre le serveur !"
+		}
 	</script>
 	<?php include_once 'resources/partials/footer.php'?>
 </body>

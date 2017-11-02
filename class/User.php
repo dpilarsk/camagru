@@ -164,6 +164,7 @@ class User
 		{
 			session_start();
 			$_SESSION['id'] = $res[0]['id'];
+			$_SESSION['token'] = $res[0]['token'];
 			$_SESSION['login'] = $res[0]['login'];
 			$_SESSION['role'] = $res[0]['role'];
 			echo 'Vous etes connecte';
