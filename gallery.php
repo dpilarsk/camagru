@@ -9,7 +9,7 @@ $db->connect("camagru");
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Camagru - Gallerie</title>
+	<title>Camagru - Galerie</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<meta name=""viewport content="width=device-width"/>
 </head>
