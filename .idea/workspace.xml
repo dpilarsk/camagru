@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa43a200-5216-41be-a620-cb5092fee0e2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/layouts/testup12_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1__1509648265__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1__1509648266__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1__1509648267__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1__1509648291__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1__1509648292__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/1__1509648293__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509646976__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509647000__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509647001__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509647003__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509647004__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509647060__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648309__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648334__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648335__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648336__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648337__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648338__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648339__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__1509648340__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/__logo.png__1509646897" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/abcd1234__1509648013__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/abcd1234__1509648172__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/abcd1234__1509648186__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/abcdef1234__1509647683__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/abcdef1234__1509648210__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/abcdef1234__1509648227__logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/test_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/testup12_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/testup1_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/testup_logo.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assembly.php" afterPath="$PROJECT_DIR$/assembly.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/style.css" afterPath="$PROJECT_DIR$/resources/css/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,39 +18,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="assembly.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="assembly.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assembly.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="34" column="106" lean-forward="false" selection-start-line="34" selection-start-column="106" selection-end-line="34" selection-end-column="106" />
+            <state relative-caret-position="180">
+              <caret line="56" column="77" lean-forward="false" selection-start-line="56" selection-start-column="77" selection-end-line="56" selection-end-column="77" />
               <folding>
                 <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upload_img_wl.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/functions/upload_img_wl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="59" lean-forward="false" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Picture.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/Picture.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="68" lean-forward="false" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
-              <folding>
-                <marker date="1509648370000" expanded="true" signature="868:902" ph="INSERT INTO layers... " />
-                <marker date="1509648370000" expanded="true" signature="868:907" ph="INSERT INTO layers... " />
-                <marker date="1509648370000" expanded="true" signature="868:908" ph="INSERT INTO layers... " />
-                <marker date="1509648370000" expanded="true" signature="1304:1344" ph="SELECT * FRO... users" />
-                <marker date="1509648370000" expanded="true" signature="2216:2301" ph="INSERT INTO layers... " />
+                <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,21 +34,19 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="244" column="27" lean-forward="false" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="27" />
+            <state relative-caret-position="557">
+              <caret line="251" column="19" lean-forward="true" selection-start-line="251" selection-start-column="12" selection-end-line="251" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gallery.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gallery.php">
+      <file leaf-file-name="upload_img_wl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/upload_img_wl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-              <folding>
-                <marker date="1509631762000" expanded="true" signature="367:383" ph="..." />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,6 +69,7 @@
       <find>user</find>
       <find>pic</find>
       <find>\n</find>
+      <find>forea</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,14 +100,14 @@
         <option value="$PROJECT_DIR$/register.php" />
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/resources/css/style.css" />
         <option value="$PROJECT_DIR$/functions/upload_layout.php" />
         <option value="$PROJECT_DIR$/resources/partials/header.php" />
         <option value="$PROJECT_DIR$/class/User.php" />
         <option value="$PROJECT_DIR$/account.php" />
-        <option value="$PROJECT_DIR$/assembly.php" />
-        <option value="$PROJECT_DIR$/functions/upload_img_wl.php" />
         <option value="$PROJECT_DIR$/class/Picture.php" />
+        <option value="$PROJECT_DIR$/resources/css/style.css" />
+        <option value="$PROJECT_DIR$/functions/upload_img_wl.php" />
+        <option value="$PROJECT_DIR$/assembly.php" />
       </list>
     </option>
   </component>
@@ -359,18 +304,18 @@
       <workItem from="1509543202738" duration="1174000" />
       <workItem from="1509544392639" duration="21673000" />
       <workItem from="1509622803931" duration="608000" />
-      <workItem from="1509627144076" duration="16122000" />
+      <workItem from="1509627144076" duration="18569000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66755000" />
+    <option name="totallyTimeSpent" value="69202000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1372" height="1440" extended-state="0" />
+    <frame x="0" y="0" width="1149" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19314869" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23063533" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -421,19 +366,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1509647514000" expanded="true" signature="460:521" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="820:942" ph="INSERT INTO users... " />
-            <marker date="1509647514000" expanded="true" signature="1598:1672" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="2168:2235" ph="UPDATE users... " />
-            <marker date="1509647514000" expanded="true" signature="2361:2447" ph="..." />
-            <marker date="1509647514000" expanded="true" signature="2390:2432" ph="{...}" />
-            <marker date="1509647514000" expanded="true" signature="2574:2614" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="2924:2991" ph="UPDATE users... " />
-            <marker date="1509647514000" expanded="true" signature="3572:3631" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="4158:4252" ph="UPDATE users... " />
-            <marker date="1509647514000" expanded="true" signature="4648:4713" ph="SELECT * FRO... users" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -643,14 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="244" column="27" lean-forward="false" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/uploads/test_logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -712,19 +637,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1134">
           <caret line="166" column="50" lean-forward="false" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
-          <folding>
-            <marker date="1509647514000" expanded="true" signature="460:521" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="820:942" ph="INSERT INTO users... " />
-            <marker date="1509647514000" expanded="true" signature="1598:1672" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="2168:2235" ph="UPDATE users... " />
-            <marker date="1509647514000" expanded="true" signature="2361:2447" ph="..." />
-            <marker date="1509647514000" expanded="true" signature="2390:2432" ph="{...}" />
-            <marker date="1509647514000" expanded="true" signature="2574:2614" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="2924:2991" ph="UPDATE users... " />
-            <marker date="1509647514000" expanded="true" signature="3572:3631" ph="SELECT * FRO... users" />
-            <marker date="1509647514000" expanded="true" signature="4158:4252" ph="UPDATE users... " />
-            <marker date="1509647514000" expanded="true" signature="4648:4713" ph="SELECT * FRO... users" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -736,35 +649,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assembly.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="34" column="106" lean-forward="false" selection-start-line="34" selection-start-column="106" selection-end-line="34" selection-end-column="106" />
-          <folding>
-            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/class/Picture.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="68" lean-forward="false" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
-          <folding>
-            <marker date="1509648370000" expanded="true" signature="868:902" ph="INSERT INTO layers... " />
-            <marker date="1509648370000" expanded="true" signature="868:907" ph="INSERT INTO layers... " />
-            <marker date="1509648370000" expanded="true" signature="868:908" ph="INSERT INTO layers... " />
-            <marker date="1509648370000" expanded="true" signature="1304:1344" ph="SELECT * FRO... users" />
-            <marker date="1509648370000" expanded="true" signature="2216:2301" ph="INSERT INTO layers... " />
-          </folding>
+        <state relative-caret-position="53">
+          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/upload_img_wl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="59" lean-forward="false" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+        <state relative-caret-position="120">
+          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="251" column="19" lean-forward="true" selection-start-line="251" selection-start-column="12" selection-end-line="251" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assembly.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="56" column="77" lean-forward="false" selection-start-line="56" selection-start-column="77" selection-end-line="56" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

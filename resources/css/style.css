@@ -247,6 +247,11 @@ header ul
 	background-color: gray;
 }
 
+.assembly .main .layouts img:hover
+{
+	cursor: pointer;
+}
+
 .assembly
 {
 	margin-left: 20px;

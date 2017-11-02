@@ -33,11 +33,11 @@
 					Choisir une image:
 					<input type="file" name="uploadPic" id="uploadPic">
 					<input type="text" name="token" value="<?= $_SESSION['token'] ?>" style="display: none">
-					<input type="text" name="layer_id" value="" id="layer_id">
+					<input type="text" name="layer_id" value="" id="layer_id" style="display: none">
 					<input type="submit" value="Upload" name="submit">
 				</form>
 				<div class="res" id="res"></div>
-				<div class="layouts">
+				<div class="layouts" id="layouts">
 					<img src="http://lorempicsum.com/rio/255/200/2" alt="1">
 					<img src="http://lorempicsum.com/rio/255/200/2" alt="2">
 					<img src="http://lorempicsum.com/rio/255/200/2" alt="3">
@@ -147,6 +147,17 @@
 			else if (xhr.status >= 400)
 				res.innerHTML = "Impossible de joindre le serveur !"
 		}
+		var layersCont = document.getElementById('layouts').getElementsByTagName('img')
+		Array.prototype.forEach.call(layersCont, function (e) {
+			e.addEventListener('click', function () {
+				var layer_id = document.getElementById('layer_id')
+				layer_id.value = e.alt
+				Array.prototype.forEach.call(layersCont, function (el) {
+					el.style.border = 'none'
+				})
+				e.style.border = 'solid 5px #FF0000'
+			})
+		})
 	</script>
 	<?php include_once 'resources/partials/footer.php'?>
 </body>
