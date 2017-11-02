@@ -133,6 +133,25 @@ class User
 			echo 'Votre nouveau mot de passe est: ' . $password;
 		}
 	}
+
+	public function login($login, $password)
+	{
+		$hashPass = hash(sha256, $password);
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE login = :login AND password = :password;");
+		$getUser->execute(array(':login' => $login,
+								':password' => $hashPass));
+		$res = $getUser->fetchAll();
+		$getUser->closeCursor();
+		if (count($res) == 0)
+		{
+			echo "Veuillez verifier votre nom d'utilisateur et votre mot de passe !";
+			die();
+		}
+		else
+		{
+			echo 'LOGIN';
+		}
+	}
 }
 
 ?>
