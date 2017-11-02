@@ -70,7 +70,10 @@ class User
 			$update->execute(array( ':login' => $login,
 									':token' => $token));
 			$update->closeCursor();
-			header('Location: index.php');
+			echo "<script>
+				setTimeout(function () {
+					window.location.replace('/');
+				}, 3000)</script>";
 		}
 	}
 
@@ -147,9 +150,23 @@ class User
 			echo "Veuillez verifier votre nom d'utilisateur et votre mot de passe !";
 			die();
 		}
+		else if ($res[0]['status'] == 0)
+		{
+			echo 'Veuillez confirmer votre compte !';
+			die();
+		}
+		else if ($res[0]['status'] == 2)
+		{
+			echo 'Vous avez ete banni, veuillez contacter le webmaster !';
+			die();
+		}
 		else
 		{
-			echo 'LOGIN';
+			session_start();
+			$_SESSION['id'] = $res[0]['id'];
+			$_SESSION['login'] = $res[0]['login'];
+			$_SESSION['role'] = $res[0]['role'];
+			print_r($_SESSION);
 		}
 	}
 }

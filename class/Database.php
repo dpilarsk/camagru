@@ -36,6 +36,7 @@ class Database
 								  	password varchar(255) NOT NULL,
 								  	email varchar(255) NOT NULL,
 								  	status int NOT NULL,
+								  	role ENUM('user', 'moderator', 'admin') DEFAULT 'user',
 								  	token varchar(255) NOT NULL,
 								  	end_at datetime,
 								  	primary key (id)
@@ -62,7 +63,7 @@ class Database
 		print_r ("layers TABLE CREATED.<br/>");
 		print_r ("User: <b>admin</b><br/>Password: <b>$newpass</b>");
 		$newpass = hash(sha256, $newpass);
-		$this->db->query("INSERT INTO users (login, password, email, status, token) VALUES (\"admin\", \"$newpass\", \"admin@camagru.fr\", 3, \"abcdef1234\");");
+		$this->db->query("INSERT INTO users (login, password, email, status, token, role) VALUES (\"admin\", \"$newpass\", \"admin@camagru.fr\", 1, \"abcdef1234\", \"admin\");");
 	}
 
 	public function connect($name = 'setup')
