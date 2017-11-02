@@ -1,7 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['id']))
+{
 	header('Location: /');
+	$_SESSION['flash'] = "Veuillez vous deconnecter afin d'acceder a cette page";
+}
 require_once 'Autoloader.php';
 Autoloader::register();
 require_once 'config/database.php';

@@ -17,11 +17,11 @@
 <body>
 	<?php include_once 'resources/partials/header.php'; ?>
 	<div class="container">
-		<?php if (isset($_SESSION['flash'])){ ?>
+		<?php if (isset($_SESSION['flash'])) { ?>
 			<p class="error"><?= $_SESSION['flash'] ?></p>
-		<?php }
-		$_SESSION = array(); ?>
-	</div>
+			<?php unset($_SESSION['flash']);
+		} ?>
+		</div>
 	<?php include_once 'resources/partials/footer.php'; ?>
 </body>
 </html>
