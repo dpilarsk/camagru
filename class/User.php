@@ -166,6 +166,7 @@ class User
 			$_SESSION['id'] = $res[0]['id'];
 			$_SESSION['login'] = $res[0]['login'];
 			$_SESSION['role'] = $res[0]['role'];
+			echo 'Vous etes connecte';
 		}
 	}
 }
