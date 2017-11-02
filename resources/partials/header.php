@@ -12,7 +12,7 @@
 			<hr>
 			<a href="#"><li>Compte</li></a>
 			<hr>
-			<a href="#"><li>Deconnexion</li></a>
+			<a href="disconnect.php"><li>Deconnexion</li></a>
 			<hr>
 		</ul>
 	</nav>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION))
+if (!isset($_SESSION['id']))
 	header('Location: /');
 require_once 'Autoloader.php';
 Autoloader::register();
