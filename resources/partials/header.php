@@ -4,9 +4,9 @@
 			<hr>
 			<a href="/"><li>Accueil</li></a>
 			<hr>
-			<?php if (isset($_SESSION['id'])){ ?>
-				<a href="gallery.php"><li>Galerie</li></a>
-				<hr>
+            <a href="gallery.php"><li>Galerie</li></a>
+            <hr>
+            <?php if (isset($_SESSION['id'])){ ?>
 				<a href="assembly.php"><li>Montage</li></a>
 				<hr>
 				<a href="account.php"><li>Compte</li></a>
