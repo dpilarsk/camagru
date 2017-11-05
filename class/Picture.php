@@ -52,7 +52,7 @@ class Picture
 		}
 	}
 
-	public function upload_img_wl($file, $user)
+	public function upload_img_wl($file, $user, $layer_id)
 	{
 		$dir = "../public/uploads/";
 		$fileType = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -87,15 +87,31 @@ class Picture
 		}
 		else
 		{
-			if (move_uploaded_file($file['tmp_name'], $target_file))
+			$source = $this->getLayerPath($layer_id);
+			if (count($source) == 0)
 			{
+				echo 'Veuillez selectionner un filtre valide !';
+				die();
+			}
+			$source[0]['path'] = '..' . $source[0]['path'];
+			$source = imagecreatefrompng($source[0]['path']);
+			if ($fileType == 'png')
+				$dest = imagecreatefrompng($file['tmp_name']);
+			else if ($fileType == 'jpg' || $fileType == 'jpeg')
+				$dest = imagecreatefromjpeg($file['tmp_name']);
+			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
+			$newP = "../public/tmp/" . $file['name'];
+			imagejpeg($dest, $newP);
+			if (rename($newP, $target_file))
+			{
+				imagedestroy($dest);
 				$new_target = explode('..', $target_file);
 				$new_target = $new_target[1];
 				$insert_upload = $this->db->prepare("INSERT INTO pictures (user_id, layer_id, path, status) VALUES (:user_id, 0, :path, 0)");
 				$insert_upload->execute(array(  ':user_id' => $res[0]['id'],
 												':path' => $new_target));
 				$insert_upload->closeCursor();
-				echo("Le fichier a ete uploade dans: $new_target\n");
+//				echo("Le fichier a ete uploade dans: $new_target\n");
 			}
 			else
 			{
@@ -110,6 +126,15 @@ class Picture
 		$layers->execute();
 		$res = $layers->fetchall();
 		$layers->closeCursor();
+		return $res;
+	}
+
+	private function getLayerPath($layer_id)
+	{
+		$path = $this->db->prepare('SELECT * FROM layers WHERE id = :id;');
+		$path->execute(array(':id' => $layer_id));
+		$res = $path->fetchAll();
+		$path->closeCursor();
 		return $res;
 	}
 }

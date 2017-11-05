@@ -35,7 +35,7 @@
 					<input type="file" name="uploadPic" id="uploadPic">
 					<input type="text" name="token" value="<?= $_SESSION['token'] ?>" style="display: none">
 					<input type="text" name="layer_id" value="" id="layer_id" style="display: none">
-					<input type="submit" value="Upload" name="submit">
+					<input type="submit" value="Upload" id="uploadButton" name="submit" disabled>
 				</form>
 				<div class="res" id="res"></div>
 				<div class="layouts" id="layouts">
@@ -73,6 +73,7 @@
 			apercu = document.getElementById('apercu'),
 			button = document.getElementById('pic'),
 			photo = document.getElementById('photo'),
+            uploadButton = document.getElementById('uploadButton'),
 			streaming = false,
 			width = 320,
 			height = 0
@@ -118,6 +119,7 @@
 			apercu.height = height
 			apercu.getContext('2d').drawImage(video, 0, 0, width, height)
 			button.disabled = true
+            uploadButton.disabled = true
 //			var data = apercu.toDataURL('image/png')
 //			photo.setAttribute('src', data)
 		})
@@ -127,6 +129,8 @@
 		form.addEventListener("submit", function (e) {
 			e.preventDefault()
 			var data = new FormData(form)
+            uploadButton.disabled = true
+            button.disabled = true
 			xhr.open('POST', '/functions/upload_img_wl.php', true)
 			xhr.send(data)
 		})
@@ -150,6 +154,7 @@
 				canvas.getContext('2d').drawImage(e, 0, 0, width, height)
 				e.style.border = 'solid 5px #FF0000'
 				button.disabled = false
+                uploadButton.disabled = false
 			})
 		})
 	</script>

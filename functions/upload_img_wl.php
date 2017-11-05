@@ -7,6 +7,11 @@ $db = new Database($DB_DSN, $DB_USER, $DB_PASSWORD);
 $db = $db->connect("camagru");
 $user = new User($db);
 $picture = new Picture($db);
-$picture->upload_img_wl($_FILES['uploadPic'], $_POST['token']);
+if (!isset($_FILES['uploadPic']) || !isset($_POST['token']) || !isset($_POST['layer_id']))
+{
+    echo 'Veuillez choisir un filtre et uploader votre image !';
+    die();
+}
+$picture->upload_img_wl($_FILES['uploadPic'], $_POST['token'], $_POST['layer_id']);
 
 ?>
