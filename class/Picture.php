@@ -150,8 +150,7 @@ class Picture
 				echo 'Veuillez selectionner un filtre valide !';
 				die();
 			}
-			$source[0]['path'] = '..' . $source[0]['path'];
-			$source = imagecreatefrompng($source[0]['path']);
+			$source = $this->resizePic('..' . $source[0]['path']);
 			$dest = imagecreatefrompng($url);
 			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
 			$newP = "../public/tmp/" . $res[0]['id'] . "__" . time() . "__.png";
@@ -189,5 +188,23 @@ class Picture
 		$res = $path->fetchAll();
 		$path->closeCursor();
 		return $res;
+	}
+
+	private function resizePic($src)
+	{
+		$img = imagecreatefrompng($src);
+		$initSize = getimagesize($src);
+		$Width = 320;
+		$Height = 240;
+		$reduce = ($Width * 100) / $initSize[0];
+		$newHeight = ($initSize[1] * $reduce) / 100;
+		$newimg = imagecreatetruecolor($Width, $Height);
+		imagesavealpha($newimg, true);
+		$trans_color = imagecolorallocatealpha($newimg, 0, 0, 0, 127);
+		imagefill($newimg, 0, 0, $trans_color);
+		imagecopyresized($newimg, $img, 0, 0, 0, 0, $Width, $Height, $initSize[0], $initSize[1]);
+		imagesavealpha($newimg, true);
+		imagedestroy($img);
+		return $newimg;
 	}
 }

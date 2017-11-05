@@ -29,7 +29,7 @@
 				<video id="video"></video>
 				<button id="pic">Take a pic</button>
 				<canvas id="canvas"></canvas>
-				<canvas id="apercu"></canvas>
+				<canvas id="apercu" style="display: none"></canvas>
 				<form action="#" method="POST" enctype="multipart/form-data" id="picture">
 					Choisir une image:
 					<input type="file" name="uploadPic" id="uploadPic">
@@ -118,11 +118,10 @@
 			e.preventDefault()
 			apercu.width = width
 			apercu.height = height
-			apercu.getContext('2d').drawImage(video, 0, 0, width, height)
 			button.disabled = true
             uploadButton.disabled = true
+			apercu.getContext('2d').drawImage(video, 0, 0, width, height)
 			var data = apercu.toDataURL('image/png')
-//			photo.setAttribute('src', data)
 			document.getElementById('webcam').value = data
 			uploadButton.disabled = false
 		})
@@ -141,6 +140,7 @@
 			var res = document.getElementById("res")
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				res.innerHTML = xhr.responseText
+				document.getElementById('webcam').value = null
 			}
 			else if (xhr.status >= 400)
 				res.innerHTML = "Impossible de joindre le serveur !"
