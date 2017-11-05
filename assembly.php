@@ -141,6 +141,7 @@
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				res.innerHTML = xhr.responseText
 				document.getElementById('webcam').value = null
+				//clear and load pictures from partials
 			}
 			else if (xhr.status >= 400)
 				res.innerHTML = "Impossible de joindre le serveur !"
