@@ -12,6 +12,13 @@ if (!isset($_FILES['uploadPic']) || !isset($_POST['token']) || !isset($_POST['la
     echo 'Veuillez choisir un filtre et uploader votre image !';
     die();
 }
-$picture->upload_img_wl($_FILES['uploadPic'], $_POST['token'], $_POST['layer_id']);
+if (!isset($_POST['webcam']))
+{
+	$picture->upload_img_wl($_FILES['uploadPic'], $_POST['token'], $_POST['layer_id']);
+}
+else
+{
+	$picture->upload_img_wc($_POST['webcam'], $_POST['token'], $_POST['layer_id']);
+}
 
 ?>

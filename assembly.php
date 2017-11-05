@@ -33,6 +33,7 @@
 				<form action="#" method="POST" enctype="multipart/form-data" id="picture">
 					Choisir une image:
 					<input type="file" name="uploadPic" id="uploadPic">
+					<input type="text" name="webcam" value="" id="webcam" style="display: none;">
 					<input type="text" name="token" value="<?= $_SESSION['token'] ?>" style="display: none">
 					<input type="text" name="layer_id" value="" id="layer_id" style="display: none">
 					<input type="submit" value="Upload" id="uploadButton" name="submit" disabled>
@@ -120,8 +121,10 @@
 			apercu.getContext('2d').drawImage(video, 0, 0, width, height)
 			button.disabled = true
             uploadButton.disabled = true
-//			var data = apercu.toDataURL('image/png')
+			var data = apercu.toDataURL('image/png')
 //			photo.setAttribute('src', data)
+			document.getElementById('webcam').value = data
+			uploadButton.disabled = false
 		})
 
 		var form = document.getElementById('picture')

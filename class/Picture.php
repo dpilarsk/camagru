@@ -120,6 +120,59 @@ class Picture
 		}
 	}
 
+	public function upload_img_wc($url, $user, $layer_id)
+	{
+		$dir = "../public/uploads/";
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE token = :token;");
+		$getUser->execute(array(':token' => $user));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		$uploadOk = 1;
+		if (count($res) == 0)
+		{
+			$uploadOk = 0;
+		}
+		$target_file = $dir . basename($res[0]['id'] . "__" . time() . "__.png");
+		if (file_exists($target_file))
+		{
+			echo 'Un fichier a deja ce nom';
+			$uploadOk = 0;
+		}
+		if ($uploadOk == 0)
+		{
+			echo "Le fichier n'a pas ete uploade !";
+		}
+		else
+		{
+			$source = $this->getLayerPath($layer_id);
+			if (count($source) == 0)
+			{
+				echo 'Veuillez selectionner un filtre valide !';
+				die();
+			}
+			$source[0]['path'] = '..' . $source[0]['path'];
+			$source = imagecreatefrompng($source[0]['path']);
+			$dest = imagecreatefrompng($url);
+			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
+			$newP = "../public/tmp/" . $res[0]['id'] . "__" . time() . "__.png";
+			imagepng($dest, $newP);
+			if (rename($newP, $target_file))
+			{
+				imagedestroy($dest);
+				$new_target = explode('..', $target_file);
+				$new_target = $new_target[1];
+				$insert_upload = $this->db->prepare("INSERT INTO pictures (user_id, layer_id, path, status) VALUES (:user_id, 0, :path, 0)");
+				$insert_upload->execute(array(  ':user_id' => $res[0]['id'],
+					':path' => $new_target));
+				$insert_upload->closeCursor();
+			}
+			else
+			{
+				echo 'Un probleme a eu lieu !';
+			}
+		}
+	}
+
 	public function getLayers()
 	{
 		$layers = $this->db->prepare('SELECT * FROM layers');
