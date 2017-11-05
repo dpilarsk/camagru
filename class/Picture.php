@@ -93,8 +93,7 @@ class Picture
 				echo 'Veuillez selectionner un filtre valide !';
 				die();
 			}
-			$source[0]['path'] = '..' . $source[0]['path'];
-			$source = imagecreatefrompng($source[0]['path']);
+			$source = $this->resizePic('..' . $source[0]['path']);
 			if ($fileType == 'png')
 				$dest = imagecreatefrompng($file['tmp_name']);
 			else if ($fileType == 'jpg' || $fileType == 'jpeg')
