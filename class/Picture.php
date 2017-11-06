@@ -106,7 +106,7 @@ class Picture
 				imagedestroy($dest);
 				$new_target = explode('..', $target_file);
 				$new_target = $new_target[1];
-				$insert_upload = $this->db->prepare("INSERT INTO pictures (user_id, layer_id, path, status) VALUES (:user_id, 0, :path, 0)");
+				$insert_upload = $this->db->prepare("INSERT INTO pictures (user_id, path, status) VALUES (:user_id, :path, 0)");
 				$insert_upload->execute(array(  ':user_id' => $res[0]['id'],
 												':path' => $new_target));
 				$insert_upload->closeCursor();
@@ -159,7 +159,7 @@ class Picture
 				imagedestroy($dest);
 				$new_target = explode('..', $target_file);
 				$new_target = $new_target[1];
-				$insert_upload = $this->db->prepare("INSERT INTO pictures (user_id, layer_id, path, status) VALUES (:user_id, 0, :path, 0)");
+				$insert_upload = $this->db->prepare("INSERT INTO pictures (user_id, path, status) VALUES (:user_id, :path, 0)");
 				$insert_upload->execute(array(  ':user_id' => $res[0]['id'],
 					':path' => $new_target));
 				$insert_upload->closeCursor();
@@ -178,6 +178,26 @@ class Picture
 		$res = $layers->fetchall();
 		$layers->closeCursor();
 		return $res;
+	}
+
+	public function getLastPics($token)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE token = :token;");
+		$getUser->execute(array(':token' => $token));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		if (count($res) == 0)
+		{
+			die('Veuillez vous reconnecter !');
+		}
+		else
+		{
+			$getPics = $this->db->prepare("SELECT * FROM pictures WHERE user_id = :id AND status = 0 ORDER BY id DESC LIMIT 5;");
+			$getPics->execute(array(':id' => $res[0]['id']));
+			$res = $getPics->fetchAll();
+			$getPics->closeCursor();
+			return $res;
+		}
 	}
 
 	private function getLayerPath($layer_id)

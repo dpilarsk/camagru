@@ -52,18 +52,7 @@
 			<br><br>
 			<div class="side">
 				<h3>Previous pics</h3>
-				<div class="card">
-					<a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a>
-				</div>
-				<div class="card">
-					<a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a>
-				</div>
-				<div class="card">
-					<a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a>
-				</div>
-				<div class="card">
-					<a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a>
-				</div>
+				<div id="previousPic"></div>
 			</div>
 		</div>
 	</div>
@@ -74,6 +63,7 @@
 			apercu = document.getElementById('apercu'),
 			button = document.getElementById('pic'),
 			photo = document.getElementById('photo'),
+			previous = document.getElementById('previousPic'),
             uploadButton = document.getElementById('uploadButton'),
 			streaming = false,
 			width = 320,
@@ -126,6 +116,22 @@
 			uploadButton.disabled = false
 		})
 
+		function getLastPics()
+		{
+			var xhr2 = getHttpRequest()
+			xhr2.open('POST', 'resources/partials/previous_pic.php', true)
+			var id = new FormData()
+			id.append('token', '<?= $_SESSION['token'] ?>')
+			xhr2.send(id)
+			xhr2.onreadystatechange = function () {
+				if (xhr2.readyState == 4 && xhr2.status === 200)
+				{
+					previous.innerHTML = xhr2.responseText
+				}
+			}
+		}
+		getLastPics()
+
 		var form = document.getElementById('picture')
 		var xhr = getHttpRequest()
 		form.addEventListener("submit", function (e) {
@@ -141,6 +147,7 @@
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				res.innerHTML = xhr.responseText
 				document.getElementById('webcam').value = null
+				getLastPics()
 				//clear and load pictures from partials
 			}
 			else if (xhr.status >= 400)
