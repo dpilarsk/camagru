@@ -4,7 +4,9 @@ require_once 'Autoloader.php';
 Autoloader::register();
 require_once 'config/database.php';
 $db = new Database($DB_DSN, $DB_USER, $DB_PASSWORD);
-$db->connect("camagru");
+$db = $db->connect("camagru");
+$pictures = new Picture($db);
+$user = new Picture($db);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,44 +20,16 @@ $db->connect("camagru");
 	<?php include_once 'resources/partials/header.php'; ?>
 	<br>
 	<div class="container">
-	<!--	<a href="view.php?id=#"><span class="card"></span></a>-->
 		<div class="gallery">
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/rio/255/200/2" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/futurama/255/200/5" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/futurama/255/200/2" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/nemo/255/200/2" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/nemo/255/200/5" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/simpsons/255/200/2" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/simpsons/255/200/5" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/up/255/200/2" alt=""></a>
-				<title class="user">User</title>
-			</div>
-			<div class="card">
-				<a href="#"><img src="http://lorempicsum.com/up/350/200/1" alt=""></a>
-				<title class="user">User</title>
-			</div>
+			<?php
+			$pictures = $pictures->getAllPics();
+			for ($i = 0; $i < count($pictures); $i++)
+			{ ?>
+				<div class="card">
+					<a href="view.php?id=<?= $pictures[$i]['id']; ?>"><img src="<?= $pictures[$i]['path']; ?>" alt="<?= $i; ?>"></a>
+					<title class="user"><?= $user->getUser($pictures[$i]['user_id']); ?></title>
+				</div>
+			<?php } ?>
 		</div>
 	</div>
 	<script src="resources/js/gallery.js"></script>

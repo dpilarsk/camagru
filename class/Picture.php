@@ -200,6 +200,25 @@ class Picture
 		}
 	}
 
+	public function getAllPics($page = 1)
+	{
+		$offset = ($page - 1) * 15;
+		$getPics = $this->db->prepare("SELECT * FROM pictures WHERE status = 0 ORDER BY id DESC LIMIT 15 OFFSET " . $offset . ";");
+		$getPics->execute();
+		$res = $getPics->fetchAll();
+		$getPics->closeCursor();
+		return $res;
+	}
+
+	public function getUser($id)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE id = :id;");
+		$getUser->execute(array(':id' => $id));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		return $res[0]['login'];
+	}
+
 	private function getLayerPath($layer_id)
 	{
 		$path = $this->db->prepare('SELECT * FROM layers WHERE id = :id;');
