@@ -264,7 +264,7 @@ header ul
 	align-items: flex-start;
 }
 
-.assembly .main
+.main
 {
 	position: relative;
 	border: solid 2px #000000;
@@ -288,7 +288,7 @@ header ul
 	margin-left: 35%;
 }
 
-.assembly .side
+.side
 {
 	margin-top: 5px;
 	text-align: center;
@@ -305,6 +305,40 @@ header ul
 .assembly .layouts img
 {
 	margin-left: 5px;
+}
+
+.preview
+{
+	margin-left: 20px;
+	margin-right: 20px;
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+	align-items: flex-start;
+}
+
+.preview .side{
+	width: 500px;
+}
+
+.preview .side .comment
+{
+	margin-top: 5px;
+	margin-left: 4%;
+	width: 90%;
+	border: solid 2px #000000;
+}
+
+.preview .side .comment h3
+{
+	margin-top: 5px;
+}
+
+.preview .side .comment p
+{
+	margin-bottom: 5px;
 }
 
 footer

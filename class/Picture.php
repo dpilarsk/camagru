@@ -200,6 +200,22 @@ class Picture
 		}
 	}
 
+	public function getPic($id)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM pictures WHERE id = :id;");
+		$getUser->execute(array(':id' => $id));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		if (count($res) == 0)
+		{
+			return (0);
+		}
+		else
+		{
+			return $res[0];
+		}
+	}
+
 	public function getAllPics($page = 1)
 	{
 		$offset = ($page - 1) * 15;

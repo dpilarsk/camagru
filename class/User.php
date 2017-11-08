@@ -170,6 +170,22 @@ class User
 			echo 'Vous etes connecte';
 		}
 	}
+
+	public function getUser($id)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE id = :id;");
+		$getUser->execute(array(':id' => $id));
+		$res = $getUser->fetchAll();
+		$getUser->closeCursor();
+		if (count($res) == 0)
+		{
+			die ('Utilisateur disparu');
+		}
+		else
+		{
+			return $res[0];
+		}
+	}
 }
 
 ?>
