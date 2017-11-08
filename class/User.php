@@ -186,6 +186,16 @@ class User
 			return $res[0];
 		}
 	}
+
+	public function changePass($newPass, $token)
+	{
+		$this->password = hash(sha256, $newPass);
+		$update = $this->db->prepare("UPDATE users SET password = :password WHERE token = :token;");
+		$update->execute(array( ':password' => $this->password,
+			':token' => $token));
+		$update->closecursor();
+		echo 'Votre mot de passe est bien change';
+	}
 }
 
 ?>
