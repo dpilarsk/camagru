@@ -18,7 +18,7 @@ for ($i = 0; $i < count($comments); $i++)
 	<div class="comment">
 		<h3><?= $user->getUser($comments[$i]['user_id'])['login']; ?></h3>
 		<hr>
-		<p><?= $comments[$i]['comment']; ?></p>
+		<p><?= htmlspecialchars($comments[$i]['comment']); ?></p>
 	</div>
 	<br>
 <?php } ?>
