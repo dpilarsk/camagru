@@ -244,13 +244,77 @@ class Picture
 		return count($res);
 	}
 
-	public function getDislikes($id)
+	public function getLikeUser($token, $pic)
 	{
-		$getUser = $this->db->prepare("SELECT * FROM likes WHERE picture_id = :id AND like_dis = -1;");
-		$getUser->execute(array(':id' => $id));
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE token = :token;");
+		$getUser->execute(array(':token' => $token));
 		$res = $getUser->fetchAll();
 		$getUser->closecursor();
-		return count($res);
+		if (count($res) == 0)
+		{
+			die();
+		}
+		else
+		{
+			$getUserLike = $this->db->prepare("SELECT * FROM likes WHERE picture_id = :id AND like_dis = 1 AND user_id = :u_id;");
+			$getUserLike->execute(array(':id' => $pic,
+				':u_id' => $res[0]['id']));
+			$res = $getUserLike->fetchAll();
+			$getUserLike->closecursor();
+			if (count($res) == 0)
+			{
+				return (0);
+			}
+			else
+			{
+				return (1);
+			}
+		}
+	}
+
+	public function like($user, $pic)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE token = :token;");
+		$getUser->execute(array(':token' => $user));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		if (count($res) == 0)
+		{
+			die();
+		}
+		else
+		{
+			$getLike = $this->db->prepare("SELECT * FROM likes WHERE user_id = :u_id AND picture_id = :p_id;");
+			$getLike->execute(array(':u_id' => $res[0]['id'],
+									':p_id' => $pic));
+			$res1 = $getLike->fetchAll();
+			$getLike->closeCursor();
+			if (count($res1) == 0)
+			{
+				$insert = $this->db->prepare("INSERT INTO likes (user_id, picture_id, like_dis) VALUES (:u_id, :p_id, 1);");
+				$insert->execute(array(':u_id' => $res[0]['id'],
+										':p_id' => $pic));
+				$insert->closeCursor();
+				return 'like';
+			}
+			else
+			{
+				if ($res1[0]['like_dis'] == 1)
+				{
+					$update = $this->db->prepare("UPDATE likes SET like_dis = 0 WHERE picture_id = :p_id;");
+					$update->execute(array(':p_id' => $pic));
+					$update->closeCursor();
+					echo 'dislike';
+				}
+				else
+				{
+					$update = $this->db->prepare("UPDATE likes SET like_dis = 1 WHERE picture_id = :p_id;");
+					$update->execute(array(':p_id' => $pic));
+					$update->closeCursor();
+					echo 'like';
+				}
+			}
+		}
 	}
 
 	private function getLayerPath($layer_id)
