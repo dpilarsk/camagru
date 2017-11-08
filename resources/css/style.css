@@ -35,6 +35,7 @@ body {
 	font-family: 'Work Sans', sans-serif;
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
 }
 ol, ul {
 	list-style: none;

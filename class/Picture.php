@@ -218,8 +218,8 @@ class Picture
 
 	public function getAllPics($page = 1)
 	{
-		$offset = ($page - 1) * 15;
-		$getPics = $this->db->prepare("SELECT * FROM pictures WHERE status = 0 ORDER BY id DESC LIMIT 15 OFFSET " . $offset . ";");
+		$offset = ($page - 1) * 25;
+		$getPics = $this->db->prepare("SELECT * FROM pictures WHERE status = 0 ORDER BY id DESC LIMIT 25 OFFSET " . $offset . ";");
 		$getPics->execute();
 		$res = $getPics->fetchAll();
 		$getPics->closeCursor();

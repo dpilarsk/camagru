@@ -20,19 +20,37 @@ $user = new Picture($db);
 	<?php include_once 'resources/partials/header.php'; ?>
 	<br>
 	<div class="container">
-		<div class="gallery">
-			<?php
-			$pictures = $pictures->getAllPics();
-			for ($i = 0; $i < count($pictures); $i++)
-			{ ?>
-				<div class="card">
-					<a href="view.php?id=<?= $pictures[$i]['id']; ?>"><img src="<?= $pictures[$i]['path']; ?>" alt="<?= $i; ?>"></a>
-					<title class="user"><?= $user->getUser($pictures[$i]['user_id']); ?></title>
-				</div>
-			<?php } ?>
+		<div class="gallery" id="gallery">
 		</div>
 	</div>
 	<script src="resources/js/gallery.js"></script>
+	<script src="resources/js/ajax.js"></script>
+	<script>
+		function getPics(page)
+		{
+			var xhr2 = getHttpRequest()
+			xhr2.open('POST', 'resources/partials/gallery_pic.php', true)
+			var id = new FormData()
+			id.append('page', page)
+			xhr2.send(id)
+			xhr2.onreadystatechange = function () {
+				if (xhr2.readyState == 4 && xhr2.status === 200)
+				{
+					document.getElementById('gallery').innerHTML = document.getElementById('gallery').innerHTML + xhr2.responseText
+				}
+			}
+		}
+		getPics(1)
+	</script>
+	<script>
+		var i = 1
+		window.addEventListener('scroll', function () {
+			if ((window.innerHeight + window.scrollY) >= (document.body.scrollHeight))
+			{
+				getPics(++i)
+			}
+		})
+	</script>
 	<?php include_once 'resources/partials/footer.php'?>
 </body>
 </html>
