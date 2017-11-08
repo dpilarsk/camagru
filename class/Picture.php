@@ -235,6 +235,24 @@ class Picture
 		return $res[0]['login'];
 	}
 
+	public function getLikes($id)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM likes WHERE picture_id = :id AND like_dis = 1;");
+		$getUser->execute(array(':id' => $id));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		return count($res);
+	}
+
+	public function getDislikes($id)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM likes WHERE picture_id = :id AND like_dis = -1;");
+		$getUser->execute(array(':id' => $id));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		return count($res);
+	}
+
 	private function getLayerPath($layer_id)
 	{
 		$path = $this->db->prepare('SELECT * FROM layers WHERE id = :id;');

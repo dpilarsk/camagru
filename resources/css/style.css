@@ -323,6 +323,23 @@ header ul
 	width: 500px;
 }
 
+.preview .side h3
+{
+	margin-top: 5px;
+}
+
+.like:hover
+{
+	border: solid 2px blue;
+	cursor: pointer;
+}
+
+.dislike:hover
+{
+	border: solid 2px red;
+	cursor: pointer;
+}
+
 .preview .side .comment
 {
 	margin-top: 5px;
