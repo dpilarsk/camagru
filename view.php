@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_GET['id']))
+if (!isset($_GET['id']) || !isset($_SESSION['id']))
 {
 	header('Location: /');
 	$_SESSION['flash'] = "Image non valide";
@@ -14,7 +14,6 @@ $picture = new Picture($db);
 $picture = $picture->getPic($_GET['id']);
 $likes = new Picture($db);
 $comments = new Comment($db);
-$user = new User($db);
 if ($picture === 0)
 {
 	header('Location: /');
@@ -42,6 +41,9 @@ if ($picture === 0)
 					<p class="number" id="likeNum" style="display: inline;"><?= $likes->getLikes($picture['id']); ?></p>
 				</div>
 			</div>
+			<?php if ($_SESSION['id'] == $picture['user_id']){ ?>
+				<a href="delete.php?id=<?= $_GET['id'] ?>" class="trash" id="trash" style="cursor:pointer;display: inline;"><img src="https://image.flaticon.com/icons/png/512/51/51032.png" alt="trash" width="3%"></a>
+			<?php } ?>
 		</div>
 		<br><br>
 		<div class="side">

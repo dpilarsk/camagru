@@ -317,6 +317,40 @@ class Picture
 		}
 	}
 
+	public function delete($pic, $token)
+	{
+		$getUser = $this->db->prepare("SELECT * FROM users WHERE token = :token;");
+		$getUser->execute(array(':token' => $token));
+		$res = $getUser->fetchAll();
+		$getUser->closecursor();
+		if (count($res) == 0)
+		{
+			header('Location: /');
+			$_SESSION['flash'] = "Votre compte n'est pas valide !";
+		}
+		else
+		{
+			$getPic = $this->db->prepare("SELECT * FROM pictures WHERE user_id = :u_id AND id = :p_id;");
+			$getPic->execute(array(':u_id' => $res[0]['id'],
+									':p_id' => $pic));
+			$res1 = $getPic->fetchAll();
+			$getPic->closecursor();
+			if (count($res1) == 0)
+			{
+				header('Location: /');
+				$_SESSION['flash'] = "Cette image est introuvable ou ne vous appartient pas";
+			}
+			else
+			{
+				$delete = $this->db->prepare("DELETE FROM pictures WHERE user_id = :u_id AND id = :p_id");
+				$delete->execute(array(':u_id' => $res[0]['id'],
+										':p_id' => $pic));
+				header('Location: /');
+				$_SESSION['flash'] = "L'image est supprimee";
+			}
+		}
+	}
+
 	private function getLayerPath($layer_id)
 	{
 		$path = $this->db->prepare('SELECT * FROM layers WHERE id = :id;');
