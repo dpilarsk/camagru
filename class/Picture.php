@@ -289,12 +289,24 @@ class Picture
 									':p_id' => $pic));
 			$res1 = $getLike->fetchAll();
 			$getLike->closeCursor();
+			$getUserIdPic = $this->db->prepare("SELECT * FROM pictures WHERE id = :id;");
+			$getUserIdPic->execute(array(':id' => $pic));
+			$res2 = $getUserIdPic->fetchAll();
+			$getUserIdPic->closeCursor();
+			$getUser = $this->db->prepare("SELECT * FROM users WHERE id = :id;");
+			$getUser->execute(array(':id' => $res2[0]['user_id']));
+			$res3 = $getUser->fetchAll();
+			$getUser->closeCursor();
 			if (count($res1) == 0)
 			{
 				$insert = $this->db->prepare("INSERT INTO likes (user_id, picture_id, like_dis) VALUES (:u_id, :p_id, 1);");
 				$insert->execute(array(':u_id' => $res[0]['id'],
 										':p_id' => $pic));
 				$insert->closeCursor();
+				mail($res3[0]['email'],
+					'Un utilisateur a aime votre photo',
+					"Un utilisateur a aime votre photo, allez voir:\r\n
+							http://localhost:8080/view.php?id=" . $pic);
 				return 'like';
 			}
 			else
@@ -311,6 +323,10 @@ class Picture
 					$update = $this->db->prepare("UPDATE likes SET like_dis = 1 WHERE picture_id = :p_id;");
 					$update->execute(array(':p_id' => $pic));
 					$update->closeCursor();
+					mail($res3[0]['email'],
+						'Un utilisateur a aime votre photo',
+						"Un utilisateur a aime votre photo, allez voir:\r\n
+							http://localhost:8080/view.php?id=" . $pic);
 					echo 'like';
 				}
 			}

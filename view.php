@@ -1,9 +1,14 @@
 <?php
 session_start();
-if (!isset($_GET['id']) || !isset($_SESSION['id']))
+if (!isset($_GET['id']))
 {
 	header('Location: /');
 	$_SESSION['flash'] = "Image non valide";
+}
+if (!isset($_SESSION['id']))
+{
+	header('Location: /');
+	$_SESSION['flash'] = 'Veuillez vous connecter pour acceder a cette page';
 }
 require_once 'Autoloader.php';
 Autoloader::register();
