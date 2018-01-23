@@ -17,7 +17,7 @@
 		echo "Votre mot de passe ne contient pas au moins une majuscule, un chiffre, un caract&edot;re sp&eacute;cial ou bien n'a pas une longueur d'au moins 8 !";
 		die();
 	}
-	else if (filter_var($POST['email'], FILTER_VALIDATE_EMAIL))
+	else if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 	{
 		echo "Votre adresse email est invalide !";
 		die();
