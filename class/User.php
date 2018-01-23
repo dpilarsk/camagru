@@ -18,9 +18,9 @@ class User
 	{
 		date_default_timezone_set('Europe/Paris');
 		$this->username = $data['username'];
-		$this->password = hash(sha256, $data['password']);
+		$this->password = hash("sha256", $data['password']);
 		$this->email = $data['email'];
-		$this->token = hash(sha256, microtime() + 0.3);
+		$this->token = hash("sha256", microtime() + 0.3);
 		$get_user = $this->db->prepare("SELECT * FROM users WHERE login = :username OR email = :email;");
 		$get_user->execute(array(':username' => $this->username, ':email' => $this->email));
 		$res = $get_user->fetchAll();
