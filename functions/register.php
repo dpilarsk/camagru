@@ -7,7 +7,7 @@
 	$db = $db->connect("camagru");
 	$user = new User($db);
 
-	if (strlen($_POST['username']) < 3)
+	if (strlen($_POST['username']) < 3 || preg_match('/[^a-zA-Z\d]/', $_POST['username']))
 	{
 		http_response_code(412);
 		echo "Nom d'utilisateur invalide !";

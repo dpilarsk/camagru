@@ -14,7 +14,7 @@ xhr.onreadystatechange = function () {
 		{
 			setTimeout(function () {
 				window.location.replace('/');
-			}, 3000)
+			})
 		}
 	}
 	else if (xhr.status >= 400)

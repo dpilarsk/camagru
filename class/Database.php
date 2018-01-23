@@ -18,6 +18,7 @@ class Database
 		{
 			$this->db = new PDO($this->dsn, $this->user, $this->pass);
 			$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		} catch (Exception $e) {
 			die ("Something Happened !" . $e->getMessage());
 		}

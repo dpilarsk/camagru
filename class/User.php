@@ -38,11 +38,16 @@ class User
 									':email' => $this->email,
 									':token' => $this->token,
 									':end_at' =>  date('Y-m-d h:m:s', strtotime('+ 1 day'))));
-			mail($this->email,
+			if (mail($this->email,
 				'Confirmation du compte',
 				"Afin de confirmer votre compte Camagru, merci de cliquer ici:\n\n
-							http://localhost:8080/confirm.php?login=$this->username&token=$this->token");
-			echo "Veuillez consulter votre email pour confirmer votre compte !";
+							http://localhost:8080/confirm.php?login=$this->username&token=$this->token"))
+							echo "Veuillez consulter votre email pour confirmer votre compte !";
+			else
+			{
+				http_response_code(412);
+				echo "Impossible d'envoyer le mail.";
+			}
 		}
 	}
 
@@ -167,7 +172,7 @@ class User
 			$_SESSION['token'] = $res[0]['token'];
 			$_SESSION['login'] = $res[0]['login'];
 			$_SESSION['role'] = $res[0]['role'];
-			echo 'Vous etes connecte';
+			$_SESSION['flash'] = 'Vous etes connecte';
 		}
 	}
 
