@@ -8,12 +8,14 @@ form.addEventListener("submit", function (e) {
 })
 xhr.onreadystatechange = function () {
 	var res = document.getElementById("res")
-	if (xhr.readyState === 4 && xhr.status === 200) {
+	if (xhr.readyState === 4) {
 		res.innerHTML = xhr.responseText
-		document.getElementById('submit').disabled = true
-		setTimeout(function () {
-			window.location.replace('/');
-		}, 3000)
+		if (xhr.status === 200)
+		{
+			setTimeout(function () {
+				window.location.replace('/');
+			}, 3000)
+		}
 	}
 	else if (xhr.status >= 400)
 		res.innerHTML = "Impossible de joindre le serveur !"

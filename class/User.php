@@ -91,7 +91,7 @@ class User
 		}
 		else
 		{
-			$this->token = hash(sha256, microtime() + 0.3);
+			$this->token = hash('sha256', microtime() + 0.3);
 			$update = $this->db->prepare("UPDATE users SET token = :token, end_at = :end WHERE email = :email;");
 			$update->execute(array( ':token' => $this->token,
 									':end' => date('Y-m-d h:m:s', strtotime('+ 1 day')),
@@ -125,8 +125,8 @@ class User
 				echo "Votre Token n'est plus valide, veuillez redemander un mot de passe.";
 				die();
 			}
-			$password = hash(sha256, time());
-			$passDB = hash(sha256, $password);
+			$password = hash('sha256', time());
+			$passDB = hash('sha256', $password);
 			$update = $this->db->prepare("UPDATE users SET password = :password, token = :token2 WHERE login = :login AND token = :token;");
 			$update->execute(array( ':password' => $passDB,
 									':login' => $login,
@@ -139,7 +139,7 @@ class User
 
 	public function login($login, $password)
 	{
-		$hashPass = hash(sha256, $password);
+		$hashPass = hash('sha256', $password);
 		$getUser = $this->db->prepare("SELECT * FROM users WHERE login = :login AND password = :password;");
 		$getUser->execute(array(':login' => $login,
 								':password' => $hashPass));
@@ -147,18 +147,18 @@ class User
 		$getUser->closeCursor();
 		if (count($res) == 0)
 		{
+			http_response_code(412);
 			echo "Veuillez verifier votre nom d'utilisateur et votre mot de passe !";
-			die();
 		}
 		else if ($res[0]['status'] == 0)
 		{
+			http_response_code(412);
 			echo 'Veuillez confirmer votre compte !';
-			die();
 		}
 		else if ($res[0]['status'] == 2)
 		{
+			http_response_code(412);
 			echo 'Vous avez ete banni, veuillez contacter le webmaster !';
-			die();
 		}
 		else
 		{
@@ -189,7 +189,7 @@ class User
 
 	public function changePass($newPass, $token)
 	{
-		$this->password = hash(sha256, $newPass);
+		$this->password = hash('sha256', $newPass);
 		$update = $this->db->prepare("UPDATE users SET password = :password WHERE token = :token;");
 		$update->execute(array( ':password' => $this->password,
 			':token' => $token));
