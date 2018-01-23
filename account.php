@@ -26,6 +26,11 @@
 		<div class="assembly">
 			<div class="main">
 				<br>
+				<form class="" action="index.html" method="post">
+					<label for="comment">Recevoir les commentaires par email ?</label>
+					<input type="checkbox" name="comment" value="1" id="comment" <?php if (isset($_SESSION['get_email?']) && $_SESSION['get_email?'] == 1) echo "checked"; ?>>
+				</form>
+				<hr>
 				<form action="#" method="POST" id="changePass">
 					<input type="password" name="newPass" id="newPass" placeholder="Nouveau mot de passe">
 					<input type="submit" id="submit1" value="Changer le mot de passe" disabled>
@@ -64,6 +69,27 @@
 					res.innerHTML = "Impossible de joindre le serveur !"
 			}
 		<?php } ?>
+		var xhr_com = getHttpRequest()
+		document.getElementById("comment").addEventListener("click", function (e) {
+			let check
+			if (this.checked)
+				check = 1
+			else
+				check = 0
+			var data = new FormData(form2)
+			data.append('token', "<?= $_SESSION['token']; ?>")
+			data.append('value', check)
+			xhr_com.open('POST', '/functions/change_comment.php', true)
+			xhr_com.send(data)
+		})
+		xhr_com.onreadystatechange = function () {
+			var res = document.getElementById("res1")
+			if (xhr_com.readyState === 4 && xhr_com.status === 200) {
+				res.innerHTML = xhr_com.responseText
+			}
+			else if (xhr_com.status >= 400)
+				res.innerHTML = "Impossible de joindre le serveur !"
+		}
 		document.getElementById("newPass").addEventListener("input", function (e) {
 			var regex = new RegExp("^(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}")
 			if (!regex.test(this.value) || this.value.length > 254)

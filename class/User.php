@@ -172,6 +172,7 @@ class User
 			$_SESSION['token'] = $res[0]['token'];
 			$_SESSION['login'] = $res[0]['login'];
 			$_SESSION['role'] = $res[0]['role'];
+			$_SESSION['get_email?'] = $res[0]['get_comments'];
 			$_SESSION['flash'] = 'Vous etes connecte';
 		}
 	}
@@ -200,6 +201,16 @@ class User
 			':token' => $token));
 		$update->closecursor();
 		echo 'Votre mot de passe est bien change';
+	}
+
+	public function changeCommentsEmail($value, $token)
+	{
+		$val = ($value == 1 ? 1 : 0);
+		$update = $this->db->prepare("UPDATE users SET get_comments = :value WHERE token = :token;");
+		$update->execute(array( ':value' => $val,
+			':token' => $token));
+		$update->closecursor();
+		echo "Vos préférences ont étés mises à jour.";
 	}
 }
 
