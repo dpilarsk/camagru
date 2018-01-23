@@ -9,19 +9,19 @@
 
 	if (strlen($_POST['username']) < 3)
 	{
+		http_response_code(412);
 		echo "Nom d'utilisateur invalide !";
-		die();
 	}
 	else if (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/", $_POST['password']))
 	{
+		http_response_code(412);
 		echo "Votre mot de passe ne contient pas au moins une majuscule, un chiffre, un caract&edot;re sp&eacute;cial ou bien n'a pas une longueur d'au moins 8 !";
-		die();
 	}
-	else if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+	else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 	{
+		http_response_code(412);
 		echo "Votre adresse email est invalide !";
-		die();
 	}
-
-	$user->register($_POST);
+	else
+		$user->register($_POST);
 ?>

@@ -20,15 +20,15 @@ class User
 		$this->username = $data['username'];
 		$this->password = hash("sha256", $data['password']);
 		$this->email = $data['email'];
-		$this->token = hash("sha256", microtime() + 0.3);
+		$this->token = hash("sha256", date("d-D-z-W"));
 		$get_user = $this->db->prepare("SELECT * FROM users WHERE login = :username OR email = :email;");
 		$get_user->execute(array(':username' => $this->username, ':email' => $this->email));
 		$res = $get_user->fetchAll();
 		$get_user->closeCursor();
 		if (count($res) != 0)
 		{
+			http_response_code(412);
 			echo "Un utilisateur utilise deja ce nom ou cet email !";
-			die();
 		}
 		else
 		{
