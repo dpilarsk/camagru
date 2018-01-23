@@ -41,6 +41,19 @@ class Comment
 			$insert->execute(array( ':u_id' => $res[0]['id'],
 				':p_id' => $pic,
 				':comment' => $comment));
+			$getUserPictureInfo = $this->db->prepare("SELECT user_id FROM pictures WHERE id = :id");
+			$getUserPictureInfo->execute(array(':id' => $pic));
+			$res1 = $getUserPictureInfo->fetchAll();
+			$getUserInfos = $this->db->prepare("SELECT email, get_comments FROM users WHERE id = :id");
+			$getUserInfos->execute(array(':id' => $res1[0]["user_id"]));
+			$res2 = $getUserInfos->fetchAll()[0];
+			if ($res2['get_comments'] == 1)
+			{
+				mail($res2['email'],
+					'Un utilisateur a commenté votre photo',
+					"Un utilisateur a commenté votre photo, allez voir:\r\n
+							http://" . $_SERVER['HTTP_HOST'] . "/view.php?id=" . $pic);
+			}
 		}
 	}
 }

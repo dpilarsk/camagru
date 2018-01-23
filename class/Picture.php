@@ -303,10 +303,6 @@ class Picture
 				$insert->execute(array(':u_id' => $res[0]['id'],
 										':p_id' => $pic));
 				$insert->closeCursor();
-				mail($res3[0]['email'],
-					'Un utilisateur a aime votre photo',
-					"Un utilisateur a aime votre photo, allez voir:\r\n
-							http://localhost:8080/view.php?id=" . $pic);
 				return 'like';
 			}
 			else

@@ -27,8 +27,13 @@ class Database
 	public function init_database($name = setup)
 	{
 		$this->dbname = $name;
-		$this->db->exec("DROP DATABASE $name;");
-		$this->db->exec("CREATE DATABASE $name;");
+		// $this->db->exec("DROP DATABASE $name;");
+		try {
+			$this->db->exec("CREATE DATABASE $name;");
+		} catch (\Exception $e) {
+			die("Une erreur est survenue, impossible de créer la base de données.");
+		}
+
 		$this->db->query("use $name;");
 		print_r ("DATABASE NAMED $name CREATED.<br/>");
 
@@ -41,6 +46,7 @@ class Database
 								  	role ENUM('user', 'moderator', 'admin') DEFAULT 'user',
 								  	token varchar(255) NOT NULL,
 								  	end_at datetime,
+									get_comments int(1) DEFAULT '1',
 								  	primary key (id)
 						);");
 		print_r ("users TABLE CREATED.<br/>");
@@ -79,9 +85,9 @@ class Database
 						);");
 		print_r ("layers TABLE CREATED.<br/>");
 
-		$newpass = hash(sha256, microtime());
+		$newpass = hash('sha256', microtime());
 		print_r ("User: <b>admin</b><br/>Password: <b>$newpass</b>");
-		$newpass = hash(sha256, $newpass);
+		$newpass = hash('sha256', $newpass);
 		$this->db->query("INSERT INTO users (login, password, email, status, token, role) VALUES (\"admin\", \"$newpass\", \"admin@camagru.fr\", 1, \"abcdef1234\", \"admin\");");
 	}
 

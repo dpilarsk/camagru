@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../Autoloader.php';
 Autoloader::register();
 require_once '../config/database.php';
