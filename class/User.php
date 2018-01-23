@@ -20,7 +20,7 @@ class User
 		$this->username = $data['username'];
 		$this->password = hash("sha256", $data['password']);
 		$this->email = $data['email'];
-		$this->token = hash("sha256", date("d-D-z-W"));
+		$this->token = hash("sha256", date("d-D-z-W:hH0s37u"));
 		$get_user = $this->db->prepare("SELECT * FROM users WHERE login = :username OR email = :email;");
 		$get_user->execute(array(':username' => $this->username, ':email' => $this->email));
 		$res = $get_user->fetchAll();
