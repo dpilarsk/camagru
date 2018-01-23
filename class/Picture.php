@@ -303,7 +303,7 @@ class Picture
 				$insert->execute(array(':u_id' => $res[0]['id'],
 										':p_id' => $pic));
 				$insert->closeCursor();
-				return 'like';
+				echo 'like';
 			}
 			else
 			{
