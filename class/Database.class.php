@@ -57,7 +57,8 @@ class Database
 				user_id int NOT NULL,
 				path varchar(255) NOT NULL,
 				status int NOT NULL,
-				primary key (id));");
+				primary key (id),
+				FOREIGN KEY (user_id) REFERENCES users(id));");
 			echo("\e[32m* La table `\e[94mpictures\e[0m\e[32m` à été créée avec succès.\e[0m\n");
 		} catch (\Exception $e) {
 			die("\e[31m> La table `\e[94mpictures\e[0m\e[31m` n'a pas pu être créée:\n> " . $e->getMessage() . ".\e[0m\n");
@@ -70,7 +71,9 @@ class Database
 				user_id int NOT NULL,
 				picture_id int NOT NULL,
 				comment TEXT NOT NULL,
-				primary key (id));");
+				primary key (id),
+				FOREIGN KEY (user_id) REFERENCES users(id),
+				FOREIGN KEY (picture_id) REFERENCES pictures(id) ON DELETE CASCADE);");
 			echo("\e[32m* La table `\e[94mcomments\e[0m\e[32m` à été créée avec succès.\e[0m\n");
 		} catch (\Exception $e) {
 			die("\e[31m> La table `\e[94mcomments\e[0m\e[31m` n'a pas pu être créée:\n> " . $e->getMessage() . ".\e[0m\n");
@@ -83,7 +86,9 @@ class Database
 				user_id int NOT NULL,
 				picture_id int NOT NULL,
 				like_dis int NOT NULL,
-				primary key (id));");
+				primary key (id),
+				FOREIGN KEY (user_id) REFERENCES users(id),
+				FOREIGN KEY (picture_id) REFERENCES pictures(id) ON DELETE CASCADE);");
 			echo("\e[32m* La table `\e[94mlikes\e[0m\e[32m` à été créée avec succès.\e[0m\n");
 		} catch (\Exception $e) {
 			die("\e[31m> La table `\e[94mlikes\e[0m\e[31m` n'a pas pu être créée:\n> " . $e->getMessage() . ".\e[0m\n");
