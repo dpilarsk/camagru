@@ -21,7 +21,6 @@ form.addEventListener("submit", function (e) {
 xhr.onreadystatechange = function () {
 	var res = document.getElementById("res")
 	if (xhr.readyState === 4 && xhr.status === 200) {
-		console.log(xhr.responseText)
 		res.innerHTML = xhr.responseText
 	}
 	else if (xhr.status >= 400)
