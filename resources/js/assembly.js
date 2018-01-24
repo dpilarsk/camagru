@@ -42,6 +42,21 @@ video.addEventListener('canplay', function (e) {
 		canvas.setAttribute('width', width)
 		canvas.setAttribute('height', height)
 		streaming = true
+		var layersCont = document.getElementById('layouts').getElementsByTagName('img')
+		Array.prototype.forEach.call(layersCont, function (e) {
+			e.addEventListener('click', function () {
+				var layer_id = document.getElementById('layer_id')
+				layer_id.value = e.alt
+				Array.prototype.forEach.call(layersCont, function (el) {
+					el.style.border = 'none'
+					canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+				})
+				canvas.getContext('2d').drawImage(e, 0, 0, width, height)
+				e.style.border = 'solid 5px #FF0000'
+				button.disabled = false
+				uploadButton.disabled = false
+			})
+		})
 	}
 }, false)
 button.addEventListener('click', function (e) {
@@ -77,18 +92,3 @@ xhr.onreadystatechange = function () {
 	else if (xhr.status >= 400)
 		res.innerHTML = "Impossible de joindre le serveur !"
 }
-var layersCont = document.getElementById('layouts').getElementsByTagName('img')
-Array.prototype.forEach.call(layersCont, function (e) {
-	e.addEventListener('click', function () {
-		var layer_id = document.getElementById('layer_id')
-		layer_id.value = e.alt
-		Array.prototype.forEach.call(layersCont, function (el) {
-			el.style.border = 'none'
-			canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-		})
-		canvas.getContext('2d').drawImage(e, 0, 0, width, height)
-		e.style.border = 'solid 5px #FF0000'
-		button.disabled = false
-		uploadButton.disabled = false
-	})
-})
