@@ -7,7 +7,7 @@
 	$db = $db->connect("camagru");
 	$user = new User($db);
 
-	if (strlen($_POST['email']) <= 0 || filter_var($POST['email'], FILTER_VALIDATE_EMAIL))
+	if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 	{
 		echo "Email invalide !";
 		die();
