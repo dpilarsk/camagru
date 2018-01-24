@@ -10,9 +10,9 @@ if (!isset($_SESSION['id']))
 	header('Location: /');
 	$_SESSION['flash'] = 'Veuillez vous connecter pour acceder a cette page';
 }
-require_once 'Autoloader.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Autoloader.php';
 Autoloader::register();
-require_once 'config/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 $db = new Database($DB_DSN, $DB_USER, $DB_PASSWORD);
 $db = $db->connect("camagru");
 $picture = new Picture($db);
@@ -34,7 +34,7 @@ if ($picture === 0)
 	<meta name=""viewport content="width=device-width"/>
 </head>
 <body>
-<?php include_once 'resources/partials/header.php'; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/resources/partials/header.php'; ?>
 <br>
 <div class="container">
 	<div class="preview">
@@ -71,7 +71,7 @@ if ($picture === 0)
 	function getLastComments()
 	{
 		var xhr2 = getHttpRequest()
-		xhr2.open('POST', 'resources/partials/last_comments.php', true)
+		xhr2.open('POST', '/resources/partials/last_comments.php', true)
 		var id = new FormData()
 		id.append('id', "<?= $_GET['id'] ?>")
 		xhr2.send(id)
