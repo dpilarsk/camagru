@@ -126,6 +126,8 @@ class Picture
 		$res = $getUser->fetchAll();
 		$getUser->closecursor();
 		$uploadOk = 1;
+		if (empty($url) || empty($user) || empty($layer_id))
+			die("Une erreur est survenue.");
 		if (count($res) == 0)
 		{
 			$uploadOk = 0;
@@ -149,7 +151,11 @@ class Picture
 				die();
 			}
 			$source = $this->resizePic('..' . $source[0]['path']);
+			if ($url === "data:,")
+				die("Une erreur est survenue.");
 			$dest = imagecreatefrompng($url);
+			if ($dest === false)
+				die("Une erreur est survenue.");
 			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
 			$newP = "../public/tmp/" . $res[0]['id'] . "__" . time() . "__.png";
 			imagepng($dest, $newP);
@@ -354,10 +360,14 @@ class Picture
 			else
 			{
 				$delete = $this->db->prepare("DELETE FROM pictures WHERE user_id = :u_id AND id = :p_id");
-				$delete->execute(array(':u_id' => $res[0]['id'],
+				$good = $delete->execute(array(':u_id' => $res[0]['id'],
 										':p_id' => $pic));
+				if ($good)
+				{
+					if(unlink($_SERVER['DOCUMENT_ROOT'] . $res1[0]['path']) == 1)
+						$_SESSION['flash'] = "Votre image a bien été supprimée.";
+				}
 				header('Location: /');
-				$_SESSION['flash'] = "L'image est supprimee";
 			}
 		}
 	}
