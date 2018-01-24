@@ -96,7 +96,8 @@ class User
 		}
 		else
 		{
-			$this->token = hash('sha256', microtime() + 0.3);
+			$this->username = $res[0]['login'];
+			$this->token = hash('sha256', date("d-D-z-W:hH0s37u"));
 			$update = $this->db->prepare("UPDATE users SET token = :token, end_at = :end WHERE email = :email;");
 			$update->execute(array( ':token' => $this->token,
 									':end' => date('Y-m-d h:m:s', strtotime('+ 1 day')),
@@ -104,8 +105,8 @@ class User
 			$update->closeCursor();
 			mail($mail,
 				'Nouveau mot de passe',
-				"Voici un lien pour reinitialiser votre mot de passe:\n\n
-							http://localhost:8080/reset.php?login=$this->username&token=$this->token");
+				"Voici un lien pour reinitialiser votre mot de passe:
+" . $_SERVER['HTTP_ORIGIN'] . "/reset.php?login=$this->username&token=$this->token");
 			echo "Veuillez consulter votre email pour reinitialiser votre mot de passe !";
 		}
 	}
@@ -135,7 +136,7 @@ class User
 			$update = $this->db->prepare("UPDATE users SET password = :password, token = :token2 WHERE login = :login AND token = :token;");
 			$update->execute(array( ':password' => $passDB,
 									':login' => $login,
-									':token2' => hash(sha512, microtime() + rand(0.037, 137.029)),
+									':token2' => hash('sha512', date("d-D-z-W:hH0s37u")),
 									':token' => $token));
 			$update->closeCursor();
 			echo 'Votre nouveau mot de passe est: ' . $password;
