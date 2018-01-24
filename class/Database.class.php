@@ -109,10 +109,56 @@ class Database
 				echo("\e[32m* Le filtre `\e[94mxen\e[0m\e[32m` à été ajouté avec succès.\e[0m\n");
 			}
 		} catch (\Exception $e) {
-
+			die("\e[31m> Le filtre `\e[94mxen\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
 		}
 
+		try {
+			if (!file_exists("public/layouts/sun_glasses.png"))
+				die("\e[31m> Le filtre `\e[94msunglasses\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+			else
+			{
+				$this->db->query("INSERT INTO layers (id, path) VALUES(2, '/public/layouts/sun_glasses.png');");
+				echo("\e[32m* Le filtre `\e[94msunglasses\e[0m\e[32m` à été ajouté avec succès.\e[0m\n");
+			}
+		} catch (\Exception $e) {
+			die("\e[31m> Le filtre `\e[94msunglasses\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+		}
 
+		try {
+			if (!file_exists("public/layouts/mask_mask.png"))
+				die("\e[31m> Le filtre `\e[94mmask\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+			else
+			{
+				$this->db->query("INSERT INTO layers (id, path) VALUES(3, '/public/layouts/mask_mask.png');");
+				echo("\e[32m* Le filtre `\e[94mmask\e[0m\e[32m` à été ajouté avec succès.\e[0m\n");
+			}
+		} catch (\Exception $e) {
+			die("\e[31m> Le filtre `\e[94mmask\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+		}
+
+		try {
+			if (!file_exists("public/layouts/dog_dog.png"))
+				die("\e[31m> Le filtre `\e[94mdog\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+			else
+			{
+				$this->db->query("INSERT INTO layers (id, path) VALUES(4, '/public/layouts/dog_dog.png');");
+				echo("\e[32m* Le filtre `\e[94mdog\e[0m\e[32m` à été ajouté avec succès.\e[0m\n");
+			}
+		} catch (\Exception $e) {
+			die("\e[31m> Le filtre `\e[94mdog\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+		}
+
+		try {
+			if (!file_exists("public/layouts/horns_horns.png"))
+				die("\e[31m> Le filtre `\e[94mhorns\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+			else
+			{
+				$this->db->query("INSERT INTO layers (id, path) VALUES(5, '/public/layouts/horns_horns.png');");
+				echo("\e[32m* Le filtre `\e[94mhorns\e[0m\e[32m` à été ajouté avec succès.\e[0m\n");
+			}
+		} catch (\Exception $e) {
+			die("\e[31m> Le filtre `\e[94mhorns\e[0m\e[31m` n'a pas pu être ajouté à la base de données.\e[0m\n");
+		}
 
 		try {
 			$password = hash('sha256', microtime());

@@ -2,7 +2,7 @@
 if (PHP_SAPI === "cli")
 {
 	require_once 'class/Database.class.php';
-	require_once 'Database.class.php';
+	require_once 'database.php';
 
 	$db = new Database($DB_DSN, $DB_USER, $DB_PASSWORD);
 	$db->init_database("camagru");
