@@ -110,7 +110,6 @@ class Picture
 				$insert_upload->execute(array(  ':user_id' => $res[0]['id'],
 												':path' => $new_target));
 				$insert_upload->closeCursor();
-//				echo("Le fichier a ete uploade dans: $new_target\n");
 			}
 			else
 			{
