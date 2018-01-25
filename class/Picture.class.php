@@ -17,22 +17,22 @@ class Picture
 		$uploadOk = 1;
 		if (file_exists($target_file))
 		{
-			echo 'Un fichier a deja ce nom';
+			echo '<p>Un fichier a deja ce nom</p>';
 			$uploadOk = 0;
 		}
 		if ($file['size'] > 5000000)
 		{
-			echo 'Le fichier est trop grand !';
+			echo '<p>Le fichier est trop grand !</p>';
 			$uploadOk = 0;
 		}
 		if ($fileType != 'png')
 		{
-			echo 'Uniquement un .png';
+			echo '<p>Uniquement un .png</p>';
 			$uploadOk = 0;
 		}
 		if ($uploadOk == 0)
 		{
-			echo "Le fichier n'a pas ete uploade !";
+			echo "<p>Le fichier n'a pas ete uploade !</p>";
 		}
 		else
 		{
@@ -43,11 +43,11 @@ class Picture
 				$insert_upload = $this->db->prepare("INSERT INTO layers (path) VALUES (:path);");
 				$insert_upload->execute(array(':path' => $new_target));
 				$insert_upload->closeCursor();
-				echo("Le fichier a ete uploade dans: $new_target\n");
+				echo("<p>Le fichier a ete uploade dans: $new_target\n</p>");
 			}
 			else
 			{
-				echo 'Un probleme a eu lieu !';
+				echo '<p>Un probleme a eu lieu !</p>';
 			}
 		}
 	}
@@ -68,29 +68,29 @@ class Picture
 		$target_file = $dir . basename($res[0]['id'] . "__" . time() . "__" . $file['name']);
 		if (file_exists($target_file))
 		{
-			echo 'Un fichier a deja ce nom';
+			echo '<p>Un fichier a deja ce nom</p>';
 			$uploadOk = 0;
 		}
 		if ($file['size'] > 5000000)
 		{
-			echo 'Le fichier est trop grand !';
+			echo '<p>Le fichier est trop grand !</p>';
 			$uploadOk = 0;
 		}
 		if ($fileType != 'png' && $fileType != 'jpg' && $fileType != 'jpeg')
 		{
-			echo 'Uniquement un .png ou .jpg ou .jpeg';
+			echo '<p>Uniquement un .png ou .jpg ou .jpeg</p>';
 			$uploadOk = 0;
 		}
 		if ($uploadOk == 0)
 		{
-			echo "Le fichier n'a pas ete uploade !";
+			echo "<p>Le fichier n'a pas ete uploade !</p>";
 		}
 		else
 		{
 			$source = $this->getLayerPath($layer_id);
 			if (count($source) == 0)
 			{
-				echo 'Veuillez selectionner un filtre valide !';
+				echo '<p>Veuillez selectionner un filtre valide !</p>';
 				die();
 			}
 			$source = $this->resizePic('..' . $source[0]['path']);
@@ -113,7 +113,7 @@ class Picture
 			}
 			else
 			{
-				echo 'Un probleme a eu lieu !';
+				echo '<p>Un probleme a eu lieu !</p>';
 			}
 		}
 	}
@@ -127,7 +127,7 @@ class Picture
 		$getUser->closecursor();
 		$uploadOk = 1;
 		if (empty($url) || empty($user) || empty($layer_id))
-			die("Une erreur est survenue.");
+			die("<p>Une erreur est survenue.</p>");
 		if (count($res) == 0)
 		{
 			$uploadOk = 0;
@@ -135,27 +135,27 @@ class Picture
 		$target_file = $dir . basename($res[0]['id'] . "__" . time() . "__.png");
 		if (file_exists($target_file))
 		{
-			echo 'Un fichier a deja ce nom';
+			echo '<p>Un fichier a deja ce nom</p>';
 			$uploadOk = 0;
 		}
 		if ($uploadOk == 0)
 		{
-			echo "Le fichier n'a pas ete uploade !";
+			echo "<p>Le fichier n'a pas ete uploade !</p>";
 		}
 		else
 		{
 			$source = $this->getLayerPath($layer_id);
 			if (count($source) == 0)
 			{
-				echo 'Veuillez selectionner un filtre valide !';
+				echo '<p>Veuillez selectionner un filtre valide !</p>';
 				die();
 			}
 			$source = $this->resizePic('..' . $source[0]['path']);
 			if ($url === "data:,")
-				die("Une erreur est survenue.");
+				die("<p>Une erreur est survenue.</p>");
 			$dest = imagecreatefrompng($url);
 			if ($dest === false)
-				die("Une erreur est survenue.");
+				die("<p>Une erreur est survenue.</p>");
 			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
 			$newP = "../public/tmp/" . $res[0]['id'] . "__" . time() . "__.png";
 			imagepng($dest, $newP);
@@ -171,7 +171,7 @@ class Picture
 			}
 			else
 			{
-				echo 'Un probleme a eu lieu !';
+				echo '<p>Un probleme a eu lieu !</p>';
 			}
 		}
 	}
@@ -193,7 +193,7 @@ class Picture
 		$getUser->closecursor();
 		if (count($res) == 0)
 		{
-			die('Veuillez vous reconnecter !');
+			die('<p>Veuillez vous reconnecter !</p>');
 		}
 		else
 		{
@@ -308,7 +308,7 @@ class Picture
 				$insert->execute(array(':u_id' => $res[0]['id'],
 										':p_id' => $pic));
 				$insert->closeCursor();
-				echo 'like';
+				echo '<p>like</p>';
 			}
 			else
 			{
@@ -317,7 +317,7 @@ class Picture
 					$update = $this->db->prepare("UPDATE likes SET like_dis = 0 WHERE picture_id = :p_id;");
 					$update->execute(array(':p_id' => $pic));
 					$update->closeCursor();
-					echo 'dislike';
+					echo '<p>dislike</p>';
 				}
 				else
 				{
@@ -328,7 +328,7 @@ class Picture
 						'Un utilisateur a aime votre photo',
 						"Un utilisateur a aime votre photo, allez voir:\r\n
 							http://localhost:8080/view.php?id=" . $pic);
-					echo 'like';
+					echo '<p>like</p>';
 				}
 			}
 		}
@@ -343,7 +343,7 @@ class Picture
 		if (count($res) == 0)
 		{
 			header('Location: /');
-			$_SESSION['flash'] = "Votre compte n'est pas valide !";
+			$_SESSION['flash'] = "<p>Votre compte n'est pas valide !</p>";
 		}
 		else
 		{
@@ -355,7 +355,7 @@ class Picture
 			if (count($res1) == 0)
 			{
 				header('Location: /');
-				$_SESSION['flash'] = "Cette image est introuvable ou ne vous appartient pas";
+				$_SESSION['flash'] = "<p>Cette image est introuvable ou ne vous appartient pas</p>";
 			}
 			else
 			{
@@ -365,7 +365,7 @@ class Picture
 				if ($good)
 				{
 					if(unlink($_SERVER['DOCUMENT_ROOT'] . $res1[0]['path']) == 1)
-						$_SESSION['flash'] = "Votre image a bien été supprimée.";
+						$_SESSION['flash'] = "<p>Votre image a bien été supprimée.</p>";
 				}
 				header('Location: /');
 			}

@@ -10,29 +10,20 @@ var video = document.getElementById("video"),
 	height = 0
 button.disabled = true
 
-navigator.getMedia = ( navigator.getUserMedia ||
-	navigator.webkitGetUserMedia ||
-	navigator.mozGetUserMedia ||
-	navigator.msGetUserMedia);
-navigator.getMedia({
-		video: true,
-		audio: false
-	},
-	function (stream) {
-		if (navigator.mozGetUserMedia)
-		{
-			video.mozSrcObject = stream;
-		}
-		else
-		{
-			var vendorURL = window.URL || window.webkitURL
-			video.src = vendorURL.createObjectURL(stream)
-		}
-		video.play()
-	},
-	function (err) {
-		document.getElementById("pic").style.display = 'none'
-	})
+	navigator.mediaDevices.getUserMedia({ audio:false, video: {width: 320, height: 240} }).then(stream => {
+											if (navigator.mozGetUserMedia)
+											{
+												video.mozSrcObject = stream;
+											}
+											else
+											{
+												var vendorURL = window.URL || window.webkitURL
+												video.src = vendorURL.createObjectURL(stream)
+											}
+											video.play()
+										}).catch(err => {
+											document.getElementById("pic").style.display = 'none'
+										})
 video.addEventListener('canplay', function (e) {
 	if (!streaming)
 	{
@@ -69,7 +60,7 @@ form.addEventListener("submit", function (e) {
 })
 xhr.onreadystatechange = function () {
 	var res = document.getElementById("res")
-	if (xhr.readyState === 4 && xhr.status === 200) {
+	if (xhr.readyState === 4 && xhr.status === 204) {
 		res.innerHTML = xhr.responseText
 		document.getElementById('webcam').value = null
 		getLastPics()

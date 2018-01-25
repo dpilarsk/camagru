@@ -10,7 +10,7 @@ xhr.onreadystatechange = function () {
 	var res = document.getElementById("res")
 	if (xhr.readyState === 4) {
 		res.innerHTML = xhr.responseText
-		if (xhr.status === 200)
+		if (xhr.status === 204)
 		{
 			setTimeout(function () {
 				window.location.replace('/');

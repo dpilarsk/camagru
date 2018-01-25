@@ -28,7 +28,7 @@ class User
 		if (count($res) != 0)
 		{
 			http_response_code(412);
-			echo "Un utilisateur utilise deja ce nom ou cet email !";
+			echo "<p>Un utilisateur utilise deja ce nom ou cet email !</p>";
 		}
 		else
 		{
@@ -42,11 +42,11 @@ class User
 				'Confirmation du compte',
 				"Afin de confirmer votre compte Camagru, merci de cliquer ici:\n\n
 							http://localhost:8080/confirm.php?login=$this->username&token=$this->token"))
-							echo "Veuillez consulter votre email pour confirmer votre compte !";
+							echo "<p>Veuillez consulter votre email pour confirmer votre compte !</p>";
 			else
 			{
 				http_response_code(412);
-				echo "Impossible d'envoyer le mail.";
+				echo "<p>Impossible d'envoyer le mail.</p>";
 			}
 		}
 	}
@@ -61,14 +61,14 @@ class User
 		$getUser->closeCursor();
 		if (count($res) == 0)
 		{
-			echo "Votre compte est soit deja valide soit une de vos informations est invalide, veuillez contacter le webmaster !";
+			echo "<p>Votre compte est soit deja valide soit une de vos informations est invalide, veuillez contacter le webmaster !</p>";
 			die();
 		}
 		else
 		{
 			if (date('Y-m-d h:m:s') > $res[0]['end_at'])
 			{
-				echo "Votre Token n'est plus valide, veuillez redemander un mot de passe.";
+				echo "<p>Votre Token n'est plus valide, veuillez redemander un mot de passe.</p>";
 				die();
 			}
 			$update = $this->db->prepare("UPDATE users SET status = 1 WHERE login = :login AND token = :token;");
@@ -91,7 +91,7 @@ class User
 		$getMail->closeCursor();
 		if (count($res) == 0)
 		{
-			echo 'Votre email est introuvable, veuillez le verifier !';
+			echo '<p>Votre email est introuvable, veuillez le verifier !</p>';
 			die();
 		}
 		else
@@ -106,8 +106,8 @@ class User
 			mail($mail,
 				'Nouveau mot de passe',
 				"Voici un lien pour reinitialiser votre mot de passe:
-" . $_SERVER['HTTP_ORIGIN'] . "/reset.php?login=$this->username&token=$this->token");
-			echo "Veuillez consulter votre email pour reinitialiser votre mot de passe !";
+" . $_SERVER['HTTP_HOST'] . "/reset.php?login=$this->username&token=$this->token");
+			echo "<p>Veuillez consulter votre email pour reinitialiser votre mot de passe !</p>";
 		}
 	}
 
@@ -121,14 +121,14 @@ class User
 		$getUser->closeCursor();
 		if (count($res) == 0)
 		{
-			echo "Une de vos informations est invalide, veuillez contacter le webmaster !";
+			echo "<p>Une de vos informations est invalide, veuillez contacter le webmaster !</p>";
 			die();
 		}
 		else
 		{
 			if (date('Y-m-d h:m:s') > $res[0]['end_at'])
 			{
-				echo "Votre Token n'est plus valide, veuillez redemander un mot de passe.";
+				echo "<p>Votre Token n'est plus valide, veuillez redemander un mot de passe.</p>";
 				die();
 			}
 			$password = hash('sha256', time());
@@ -139,7 +139,7 @@ class User
 									':token2' => hash('sha512', date("d-D-z-W:hH0s37u")),
 									':token' => $token));
 			$update->closeCursor();
-			echo 'Votre nouveau mot de passe est: ' . $password;
+			echo '<p>Votre nouveau mot de passe est: ' . $password . '</p>';
 		}
 	}
 
@@ -154,17 +154,17 @@ class User
 		if (count($res) == 0)
 		{
 			http_response_code(412);
-			echo "Veuillez verifier votre nom d'utilisateur et votre mot de passe !";
+			echo "<p>Veuillez verifier votre nom d'utilisateur et votre mot de passe !</p>";
 		}
 		else if ($res[0]['status'] == 0)
 		{
 			http_response_code(412);
-			echo 'Veuillez confirmer votre compte !';
+			echo '<p>Veuillez confirmer votre compte !</p>';
 		}
 		else if ($res[0]['status'] == 2)
 		{
 			http_response_code(412);
-			echo 'Vous avez ete banni, veuillez contacter le webmaster !';
+			echo '<p>Vous avez ete banni, veuillez contacter le webmaster !</p>';
 		}
 		else
 		{
@@ -174,7 +174,7 @@ class User
 			$_SESSION['login'] = $res[0]['login'];
 			$_SESSION['role'] = $res[0]['role'];
 			$_SESSION['get_email?'] = $res[0]['get_comments'];
-			$_SESSION['flash'] = 'Vous etes connecte';
+			$_SESSION['flash'] = '<p>Vous etes connecte</p>';
 		}
 	}
 
@@ -186,7 +186,7 @@ class User
 		$getUser->closeCursor();
 		if (count($res) == 0)
 		{
-			die ('Utilisateur disparu');
+			die ('<p>Utilisateur disparu</p>');
 		}
 		else
 		{
@@ -201,7 +201,7 @@ class User
 		$update->execute(array( ':password' => $this->password,
 			':token' => $token));
 		$update->closecursor();
-		echo 'Votre mot de passe est bien change';
+		echo '<p>Votre mot de passe est bien change</p>';
 	}
 
 	public function changeCommentsEmail($value, $token)
@@ -211,7 +211,7 @@ class User
 		$update->execute(array( ':value' => $val,
 			':token' => $token));
 		$update->closecursor();
-		echo "Vos préférences ont étés mises à jour.";
+		echo "<p>Vos préférences ont étés mises à jour.</p>";
 	}
 }
 

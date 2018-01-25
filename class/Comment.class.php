@@ -16,7 +16,7 @@ class Comment
 		$res = $getComments->fetchAll();
 		$getComments->closecursor();
 		if (count($res) == 0)
-			die('Aucun commentaire trouve.');
+			die('<p>Aucun commentaire trouve.</p>');
 		else
 			return $res;
 	}
@@ -28,7 +28,7 @@ class Comment
 		$res = $getUser->fetchAll();
 		$getUser->closecursor();
 		if (count($res) == 0)
-			die("Impossible d'ajouter votre commentaire.");
+			die("<p>Impossible d'ajouter votre commentaire.</p>");
 		else
 		{
 			try {
@@ -50,7 +50,7 @@ class Comment
 								http://" . $_SERVER['HTTP_HOST'] . "/view.php?id=" . $pic);
 				}
 			} catch (\Exception $e) {
-				die("Une erreur est survenue lors de la création de votre commentaire.");
+				die("<p>Une erreur est survenue lors de la création de votre commentaire.</p>");
 			}
 
 		}

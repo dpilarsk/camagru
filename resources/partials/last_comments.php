@@ -13,12 +13,16 @@ $db = $db->connect("camagru");
 $comments = new Comment($db);
 $user = new User($db);
 $comments = $comments->getLastComments($_POST['id']);
+?>
+<div>
+<?php
 for ($i = 0; $i < count($comments); $i++)
 { ?>
 	<div class="comment">
 		<h3><?= $user->getUser($comments[$i]['user_id'])['login']; ?></h3>
-		<hr>
+		<hr/>
 		<p><?= htmlspecialchars($comments[$i]['comment']); ?></p>
 	</div>
-	<br>
+	<br/>
 <?php } ?>
+</div>

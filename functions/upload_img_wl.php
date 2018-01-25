@@ -20,5 +20,5 @@ else
 {
 	$picture->upload_img_wc($_POST['webcam'], $_POST['token'], $_POST['layer_id']);
 }
-
+http_response_code(204);
 ?>

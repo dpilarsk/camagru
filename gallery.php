@@ -20,7 +20,7 @@ $user = new Picture($db);
 	<?php include_once 'resources/partials/header.php'; ?>
 	<br>
 	<div class="container">
-		<div class="gallery" id="gallery">
+		<div id="gallery">
 		</div>
 	</div>
 	<script src="resources/js/gallery.js"></script>

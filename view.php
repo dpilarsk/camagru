@@ -108,9 +108,8 @@ if ($picture === 0)
 	})
 	xhr.onreadystatechange = function () {
 		var res = document.getElementById("res")
-		if (xhr.readyState === 4 && xhr.status === 200) {
+		if (xhr.readyState === 4 && xhr.status === 204) {
 			getLastComments()
-			document.getElementById('res').innerHTML = xhr.responseText
 			document.getElementById('commentContent').value = ""
 		}
 	}
@@ -125,7 +124,7 @@ if ($picture === 0)
 	xhr1.onreadystatechange = function () {
 		if (xhr1.readyState === 4 && xhr1.status === 200) {
 			var num = <?= $likes->getLikes($picture['id']); ?>;
-			if (xhr1.responseText == "like")
+			if (xhr1.responseText == "<p>like</p>")
 			{
 				document.getElementById('like').style.border = 'solid 1px blue'
 				document.getElementById('likeNum').innerHTML = num > 0 ? num : num + 1

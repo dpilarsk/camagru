@@ -12,11 +12,15 @@
 	$db = $db->connect("camagru");
 	$pictures = new Picture($db);
 ?>
+<div>
 <?php
 $pictures = $pictures->getLastPics($_POST['token']);
 for ($i = 0; $i < count($pictures); $i++)
 { ?>
 	<div class="card">
-		<a href="view.php?id=<?= $pictures[$i]['id']; ?>"><img src="<?= $pictures[$i]['path']; ?>" alt="<?= $i; ?>"></a>
+		<a href="view.php?id=<?= $pictures[$i]['id']; ?>">
+			<img src="<?= $pictures[$i]['path']; ?>" alt="<?= $i; ?>"/>
+		</a>
 	</div>
 <?php } ?>
+</div>
