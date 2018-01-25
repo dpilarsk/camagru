@@ -15,6 +15,7 @@ class Picture
 		$fileType = pathinfo($file['name'], PATHINFO_EXTENSION);
 		$target_file = $dir . basename($name . "_" . $file['name']);
 		$uploadOk = 1;
+		echo "<div>";
 		if (file_exists($target_file))
 		{
 			echo '<p>Un fichier a deja ce nom</p>';
@@ -50,6 +51,7 @@ class Picture
 				echo '<p>Un probleme a eu lieu !</p>';
 			}
 		}
+		echo "</div>";
 	}
 
 	public function upload_img_wl($file, $user, $layer_id)
