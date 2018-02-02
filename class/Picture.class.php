@@ -287,7 +287,7 @@ class Picture
 		$getUser->closecursor();
 		if (count($res) == 0)
 		{
-			die();
+			return ;
 		}
 		else
 		{
@@ -316,20 +316,16 @@ class Picture
 			{
 				if ($res1[0]['like_dis'] == 1)
 				{
-					$update = $this->db->prepare("UPDATE likes SET like_dis = 0 WHERE picture_id = :p_id;");
-					$update->execute(array(':p_id' => $pic));
+					$update = $this->db->prepare("UPDATE likes SET like_dis = 0 WHERE picture_id = :p_id AND user_id = :id;");
+					$update->execute(array(':p_id' => $pic, ':id' => $res[0]['id']));
 					$update->closeCursor();
 					echo '<p>dislike</p>';
 				}
 				else
 				{
-					$update = $this->db->prepare("UPDATE likes SET like_dis = 1 WHERE picture_id = :p_id;");
-					$update->execute(array(':p_id' => $pic));
+					$update = $this->db->prepare("UPDATE likes SET like_dis = 1 WHERE picture_id = :p_id AND user_id = :id;");
+					$update->execute(array(':p_id' => $pic, ':id' => $res[0]['id']));
 					$update->closeCursor();
-					mail($res3[0]['email'],
-						'Un utilisateur a aime votre photo',
-						"Un utilisateur a aime votre photo, allez voir:\r\n
-							http://" . $_SERVER['HTTP_HOST'] . "/view.php?id=" . $pic);
 					echo '<p>like</p>';
 				}
 			}
