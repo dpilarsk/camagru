@@ -32,6 +32,7 @@ if ($picture === 0)
 	<title>Camagru - Montage photo</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<meta name=""viewport content="width=device-width"/>
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
 </head>
 <body>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/resources/partials/header.php'; ?>

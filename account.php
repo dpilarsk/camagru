@@ -18,6 +18,7 @@
 	<title>Camagru - compte</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<meta name=""viewport content="width=device-width"/>
+	<link rel="shortcut icon" href="/resources/images/favicon.ico">
 </head>
 <body>
 	<?php include_once 'resources/partials/header.php'; ?>
