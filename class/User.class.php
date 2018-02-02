@@ -62,14 +62,14 @@ class User
 		if (count($res) == 0)
 		{
 			echo "<p>Votre compte est soit deja valide soit une de vos informations est invalide, veuillez contacter le webmaster !</p>";
-			die();
+			return ;
 		}
 		else
 		{
 			if (date('Y-m-d h:m:s') > $res[0]['end_at'])
 			{
 				echo "<p>Votre Token n'est plus valide, veuillez redemander un mot de passe.</p>";
-				die();
+				return ;
 			}
 			$update = $this->db->prepare("UPDATE users SET status = 1 WHERE login = :login AND token = :token;");
 			$update->execute(array( ':login' => $login,
@@ -78,7 +78,7 @@ class User
 			echo "<script>
 				setTimeout(function () {
 					window.location.replace('/');
-				}, 3000)</script>";
+				}, 100)</script>";
 		}
 	}
 
