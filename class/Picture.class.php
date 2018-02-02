@@ -329,7 +329,7 @@ class Picture
 					mail($res3[0]['email'],
 						'Un utilisateur a aime votre photo',
 						"Un utilisateur a aime votre photo, allez voir:\r\n
-							http://localhost:8080/view.php?id=" . $pic);
+							http://" . $_SERVER['HTTP_HOST'] . "/view.php?id=" . $pic);
 					echo '<p>like</p>';
 				}
 			}

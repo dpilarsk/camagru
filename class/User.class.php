@@ -41,7 +41,7 @@ class User
 			if (mail($this->email,
 				'Confirmation du compte',
 				"Afin de confirmer votre compte Camagru, merci de cliquer ici:\n\n
-							http://localhost:8080/confirm.php?login=$this->username&token=$this->token"))
+							http://" . $_SERVER['HTTP_HOST'] . "/confirm.php?login=$this->username&token=$this->token"))
 							echo "<p>Veuillez consulter votre email pour confirmer votre compte !</p>";
 			else
 			{
@@ -106,7 +106,7 @@ class User
 			mail($mail,
 				'Nouveau mot de passe',
 				"Voici un lien pour reinitialiser votre mot de passe:
-" . $_SERVER['HTTP_HOST'] . "/reset.php?login=$this->username&token=$this->token");
+http://" . $_SERVER['HTTP_HOST'] . "/reset.php?login=$this->username&token=$this->token");
 			echo "<p>Veuillez consulter votre email pour reinitialiser votre mot de passe !</p>";
 		}
 	}
@@ -176,6 +176,7 @@ class User
 			$_SESSION['get_email?'] = $res[0]['get_comments'];
 			$_SESSION['flash'] = '<p>Vous etes connecte</p>';
 		}
+		return ;
 	}
 
 	public function getUser($id)
