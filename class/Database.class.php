@@ -178,9 +178,11 @@ class Database
 
 	public function connect($name = 'setup')
 	{
-		if (!$this->db->query("use $name;"))
-			die("Please setup database");
-		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		try {
+			$this->db->query("use $name;");
+		} catch (\Exception $e) {
+			die("Veuillez configurer la base de donnees.");
+		}
 		return $this->db;
 	}
 }
