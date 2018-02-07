@@ -29,7 +29,7 @@ if ($picture === 0)
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Camagru - Montage photo</title>
+	<title>Camagru - Visualisation photo</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<meta name=""viewport content="width=device-width"/>
 	<link rel="shortcut icon" href="/favicon.ico">
