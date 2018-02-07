@@ -95,13 +95,17 @@ class Picture
 				echo '<p>Veuillez selectionner un filtre valide !</p>';
 				die();
 			}
+			if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/public/tmp"))
+				mkdir($_SERVER['DOCUMENT_ROOT'] . "/public/tmp");
+				if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/public/uploads"))
+					mkdir($_SERVER['DOCUMENT_ROOT'] . "/public/uploads");
 			$source = $this->resizePic('..' . $source[0]['path']);
 			if ($fileType == 'png')
 				$dest = imagecreatefrompng($file['tmp_name']);
 			else if ($fileType == 'jpg' || $fileType == 'jpeg')
 				$dest = imagecreatefromjpeg($file['tmp_name']);
 			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
-			$newP = "../public/tmp/" . $file['name'];
+			$newP = $_SERVER['DOCUMENT_ROOT'] . "/public/tmp/" . $file['name'];
 			imagejpeg($dest, $newP);
 			if (rename($newP, $target_file))
 			{
@@ -152,6 +156,10 @@ class Picture
 				echo '<p>Veuillez selectionner un filtre valide !</p>';
 				die();
 			}
+			if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/public/tmp"))
+				mkdir($_SERVER['DOCUMENT_ROOT'] . "/public/tmp");
+				if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/public/uploads"))
+					mkdir($_SERVER['DOCUMENT_ROOT'] . "/public/uploads");
 			$source = $this->resizePic('..' . $source[0]['path']);
 			if ($url === "data:,")
 				die("<p>Une erreur est survenue.</p>");
@@ -159,7 +167,7 @@ class Picture
 			if ($dest === false)
 				die("<p>Une erreur est survenue.</p>");
 			imagecopy($dest, $source, 0, 0, 0, 0, imagesx($source), imagesy($source));
-			$newP = "../public/tmp/" . $res[0]['id'] . "__" . time() . "__.png";
+			$newP = $_SERVER['DOCUMENT_ROOT'] . "/public/tmp/" . $res[0]['id'] . "__" . time() . "__.png";
 			imagepng($dest, $newP);
 			if (rename($newP, $target_file))
 			{
