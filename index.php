@@ -22,7 +22,11 @@
 			<p class="error"><?= $_SESSION['flash'] ?></p>
 			<?php unset($_SESSION['flash']);
 		} ?>
-		</div>
+		<h1 style="text-align: center;font-size: 5em;">Bienvenue sur Camagru.</h1>
+		<center>
+			<img src="https://images.unsplash.com/photo-1493160221091-3926257964be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=601277bb9b64b28f5122a43e7fae386d&auto=format&fit=crop&w=2700&q=80" alt="photo" width="60%">
+		</center>
+	</div>
 	<?php include_once 'resources/partials/footer.php'; ?>
 </body>
 </html>
