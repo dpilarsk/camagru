@@ -7,4 +7,5 @@
 	$db = $db->connect("camagru");
 	$user = new User($db);
 	$user->login($_POST['username'], $_POST['password']);
+	http_response_code(204);
 ?>
