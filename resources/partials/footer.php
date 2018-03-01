@@ -1,3 +1,3 @@
 <footer>
-	dpilarsk &copy; - 2018
+	dpilarsk &copy; - <?php echo date('Y'); ?>
 </footer>
